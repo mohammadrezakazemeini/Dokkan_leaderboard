@@ -6,33 +6,28 @@
     <title>لیدربرد دکّان</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
-
         * {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'Vazirmatn', sans-serif !important;
         }
-
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             background-size: 200% 200%;
             animation: bgMove 18s ease infinite;
             min-height: 100vh;
         }
-
         .leaderboard-card {
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
-
         .header-gradient {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             padding: 2rem;
             text-align: center;
         }
-
         .rank-badge {
             width: 50px;
             height: 50px;
@@ -45,33 +40,28 @@
             font-weight: bold;
             font-size: 1.2rem;
         }
-
         .rank-1 {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             color: white;
             box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
             animation: glowPulse 2.4s ease-in-out infinite;
         }
-
         .rank-2 {
             background: linear-gradient(135deg, #C0C0C0, #808080);
             color: white;
             box-shadow: 0 4px 15px rgba(192, 192, 192, 0.4);
             animation: glowPulse 2.6s ease-in-out infinite;
         }
-
         .rank-3 {
             background: linear-gradient(135deg, #CD7F32, #8B4513);
             color: white;
             box-shadow: 0 4px 15px rgba(205, 127, 50, 0.4);
             animation: glowPulse 2.8s ease-in-out infinite;
         }
-
         .rank-other {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
         }
-
         .leaderboard-row {
             display: flex;
             align-items: center;
@@ -80,12 +70,10 @@
             transition: all 0.3s ease;
             flex-wrap: wrap;
         }
-
         .leaderboard-row:hover {
             background: #f8f9ff;
             transform: translateX(-5px);
         }
-
         .brand-name {
             flex: 1;
             font-size: 1.1rem;
@@ -94,12 +82,10 @@
             margin: 0 1rem;
             word-break: break-word;
         }
-
         .stats-wrapper {
             display: flex;
             align-items: center;
         }
-
         .stat-box {
             background: #f7fafc;
             padding: 0.6rem 1.2rem;
@@ -108,34 +94,26 @@
             text-align: center;
             min-width: 110px;
         }
-
         .stat-label {
             font-size: 0.75rem;
             color: #718096;
             margin-bottom: 0.15rem;
         }
-
         .stat-value {
             font-size: 1.1rem;
             font-weight: bold;
             color: #2d3748;
         }
-
         .trophy-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
             animation: floatTrophy 3s ease-in-out infinite;
         }
-
-        /* Floating trophy animation */
         @keyframes floatTrophy {
             0% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
             100% { transform: translateY(0); }
         }
-        
-
-        /* Glow pulse for top badges */
         @keyframes glowPulse {
             0% {
                 box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
@@ -150,8 +128,6 @@
                 transform: scale(1);
             }
         }
-
-        /* Soft animated background gradient */
         @keyframes bgMove {
             0% {
                 background-position: 0% 50%;
@@ -163,7 +139,6 @@
                 background-position: 0% 50%;
             }
         }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -174,13 +149,10 @@
                 transform: translateY(0);
             }
         }
-
         .animate-row {
             animation: fadeInUp 0.6s ease forwards;
             opacity: 0;
         }
-
-        /* Delay animations for each row */
         .animate-row:nth-child(1) { animation-delay: 0.1s; }
         .animate-row:nth-child(2) { animation-delay: 0.2s; }
         .animate-row:nth-child(3) { animation-delay: 0.3s; }
@@ -216,38 +188,30 @@
         .animate-row:nth-child(33) { animation-delay: 3.3s; }
         .animate-row:nth-child(34) { animation-delay: 3.4s; }
         .animate-row:nth-child(35) { animation-delay: 3.5s; }
-
-        /* MOBILE LAYOUT FIXES */
         @media (max-width: 640px) {
             .leaderboard-row {
                 padding: 1rem 1rem;
             }
-
             .brand-name {
                 width: 100%;
                 margin: 0.75rem 0 0.25rem;
                 font-size: 1rem;
             }
-
             .stats-wrapper {
                 width: 100%;
                 margin-top: 0.5rem;
                 display: flex;
                 flex-direction: column;
             }
-
             .stat-box {
                 width: 100%;
                 margin: 0.25rem 0;
                 padding: 0.6rem 0.9rem;
                 text-align: center;
             }
-
             .stat-value {
                 font-size: 1rem;
             }
-            
-
             .rank-badge {
                 width: 44px;
                 height: 44px;
@@ -266,272 +230,534 @@
                 <h1 class="text-4xl font-bold text-white mb-2">لیدربرد دکّان</h1>
                 <p class="text-white text-opacity-90">رتبه‌بندی برندهای زعفران</p>
             </div>
-
             <div class="p-6">
 
     <div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-1"><i class="fas fa-crown"></i></div>
-    <div class="brand-name">سفیرا</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">6.6 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪15.71</div>
-        </div>
-    </div>
-</div>
-
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-2">2</div>
-    <div class="brand-name">زرسازان</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">6.6 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪15.71</div>
+        <div class="rank-badge rank-1"><i class="fas fa-crown"></i></div>
+        <div class="brand-name">سفیرا</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">6.6 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪15.71</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-3">3</div>
-    <div class="brand-name">ساتیرا</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">6 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪14.29</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-2">2</div>
+        <div class="brand-name">زرسازان</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">6.6 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪15.71</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">4</div>
-    <div class="brand-name">هور</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-3">3</div>
+        <div class="brand-name">ساتیرا</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">6 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪14.29</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">5</div>
-    <div class="brand-name">تیسور</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">4</div>
+        <div class="brand-name">هور</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">6</div>
-    <div class="brand-name">زرافران</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">5</div>
+        <div class="brand-name">تیسور</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">7</div>
-    <div class="brand-name">زرنوا</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">6</div>
+        <div class="brand-name">زرافران</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">8</div>
-    <div class="brand-name">میترا</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">7</div>
+        <div class="brand-name">زرنوا</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">9</div>
-    <div class="brand-name">اعیانی</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">8</div>
+        <div class="brand-name">میترا</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">10</div>
-    <div class="brand-name">سرو زر</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">9</div>
+        <div class="brand-name">اعیانی</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Continue similarly for the remaining brands -->
-
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">11</div>
-    <div class="brand-name">زرنگار</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">10</div>
+        <div class="brand-name">سرو زر</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">12</div>
-    <div class="brand-name">azaferan</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">11</div>
+        <div class="brand-name">زرنگار</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">13</div>
-    <div class="brand-name">گل پری</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">12</div>
+        <div class="brand-name">azaferan</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">14</div>
-    <div class="brand-name">زرآسا</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">13</div>
+        <div class="brand-name">گل پری</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">15</div>
-    <div class="brand-name">zero</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">14</div>
+        <div class="brand-name">زرآسا</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Continue for remaining brands with 0 sales and 0 market share -->
-
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">16</div>
-    <div class="brand-name">سفوران</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">2 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪4.76</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">15</div>
+        <div class="brand-name">zero</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- ... -->
-
-<div class="leaderboard-row animate-row">
-    <div class="rank-badge rank-other">35</div>
-    <div class="brand-name">سفیرا</div>
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <div class="stat-label">مقدار فروش</div>
-            <div class="stat-value">0 گرم</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">سهم در بازار</div>
-            <div class="stat-value">٪0.00</div>
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">16</div>
+        <div class="brand-name">سفوران</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">17</div>
+        <div class="brand-name">زفرا</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">18</div>
+        <div class="brand-name">زعفرو</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">٪2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">19</div>
+        <div class="brand-name">زرون</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">20</div>
+        <div class="brand-name">خاتون</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">21</div>
+        <div class="brand-name">پری زاد</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">2 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪4.76</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">22</div>
+        <div class="brand-name">عطر خورشید</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">23</div>
+        <div class="brand-name">آرمیتی</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">24</div>
+        <div class="brand-name">زرکس</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">25</div>
+        <div class="brand-name">زرپر</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">26</div>
+        <div class="brand-name">ساروند</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">27</div>
+        <div class="brand-name">زروا</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">28</div>
+        <div class="brand-name">کام بیز</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">29</div>
+        <div class="brand-name">کوهی خیل</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">30</div>
+        <div class="brand-name">اصالت</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">31</div>
+        <div class="brand-name">زرمه</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">32</div>
+        <div class="brand-name">زرتاب</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">33</div>
+        <div class="brand-name">مثقال</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">34</div>
+        <div class="brand-name">زریران</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-row animate-row">
+        <div class="rank-badge rank-other">35</div>
+        <div class="brand-name">سفیرا</div>
+        <div class="stats-wrapper">
+            <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">0 گرم</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪0.00</div>
+            </div>
+        </div>
+    </div>
 
             </div>
-
             <div class="bg-gray-50 p-4 text-center text-gray-600 text-sm">
                 <i class="fas fa-sync-alt"></i> آخرین به‌روزرسانی: امروز
             </div>
