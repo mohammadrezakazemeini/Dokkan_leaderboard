@@ -489,205 +489,204 @@
 
   <script>
     // ==== WEEKLY DATA ====
-    const weeklyLeaderboards = [
-      // Week 1 (your original data)
-      {
-        id: "week1",
-        label: "هفته ۱",
-        dateRange: "۱۴۰۴/۸/۲۱ تا ۱۴۰۴/۸/۲۷",
-        data: [
-          { rank: 1,  brand: "سفیرا",      sales: 45.4, share: 20.95 },
-          { rank: 2,  brand: "زرون",       sales: 34.2, share: 15.78 },
-          { rank: 3,  brand: "زرآسا",      sales: 21.2, share: 9.78 },
-          { rank: 4,  brand: "گل پری",     sales: 14.6, share: 6.74 },
-          { rank: 5,  brand: "اعیانی",     sales: 10.0, share: 4.61 },
-          { rank: 6,  brand: "azaferan",   sales: 8.6, share: 3.97 },
-          { rank: 7,  brand: "میترا",      sales: 8.0, share: 3.69 },
-          { rank: 8,  brand: "عطر خورشید", sales: 8.0, share: 3.69 },
-          { rank: 9,  brand: "زرسازان",    sales: 6.6, share: 3.05 },
-          { rank: 10, brand: "خاتون",      sales: 6.6, share: 3.05 },
-          { rank: 11, brand: "ساتیرا",     sales: 6.0, share: 2.77 },
-          { rank: 12, brand: "زعفرو",      sales: 6.0, share: 2.77 },
-          { rank: 13, brand: "سفرون",      sales: 5.5, share: 2.54 },
-          { rank: 14, brand: "زرافران",    sales: 4.0, share: 1.85 },
-          { rank: 15, brand: "سرو زر",     sales: 4.0, share: 1.85 },
-          { rank: 16, brand: "هور",        sales: 2.0, share: 0.92 },
-          { rank: 17, brand: "تیسور",      sales: 2.0, share: 0.92 },
-          { rank: 18, brand: "زرنوا",      sales: 2.0, share: 0.92 },
-          { rank: 19, brand: "زرنگار",     sales: 2.0, share: 0.92 },
-          { rank: 20, brand: "zero",       sales: 2.0, share: 0.92 },
-          { rank: 21, brand: "سفوران",     sales: 2.0, share: 0.92 },
-          { rank: 22, brand: "زفرا",       sales: 2.0, share: 0.92 },
-          { rank: 23, brand: "پری زاد",    sales: 2.0, share: 0.92 },
-          { rank: 24, brand: "زریران",     sales: 2.0, share: 0.92 },
-          { rank: 25, brand: "آرمیتی",     sales: 2.0, share: 0.92 },
-          { rank: 26, brand: "ساروند",     sales: 2.0, share: 0.92 },
-          { rank: 27, brand: "زرپر",       sales: 2.0, share: 0.92 },
-          { rank: 28, brand: "اصالت",      sales: 2.0, share: 0.92 },
-          { rank: 29, brand: "زرمه",       sales: 2.0, share: 0.92 },
-          { rank: 30, brand: "زرکس",       sales: 0.0, share: 0.00 },
-          { rank: 31, brand: "زروا",       sales: 0.0, share: 0.00 },
-          { rank: 32, brand: "کام بیز",    sales: 0.0, share: 0.00 },
-          { rank: 33, brand: "کوهی خیل",   sales: 0.0, share: 0.00 },
-          { rank: 34, brand: "زرتاب",      sales: 0.0, share: 0.00 },
-          { rank: 35, brand: "مثقال",      sales: 0.0, share: 0.00 }
-        ]
-      },
-      // Week 2 (NEW) – replace with your real second-week data
-      {
+ const weeklyLeaderboards = [
+  // Week 1 (your original data)
   {
-  id: "week2",
-  label: "هفته ۲",
-  dateRange: "۱۴۰۴/۸/۲۸ تا ۱۴۰۴/۹/۴",
-  data: [
-    { rank: 1,  brand: "زرون",        sales: 92.0, share: 24.12 },
-    { rank: 2,  brand: "سرو زر",      sales: 50.6, share: 13.26 },
-    { rank: 3,  brand: "azaferan",    sales: 36.8, share: 9.65 },
-    { rank: 4,  brand: "سفیرا",       sales: 32.2, share: 8.44 },
-    { rank: 5,  brand: "زرنگار",      sales: 32.0, share: 8.39 },
-    { rank: 6,  brand: "زرنوا",       sales: 27.6, share: 7.23 },
-    { rank: 7,  brand: "زرسازان",     sales: 23.0, share: 6.03 },
-    { rank: 8,  brand: "پری زاد",     sales: 17.8, share: 4.67 },
-    { rank: 9,  brand: "ساروند",      sales: 17.2, share: 4.51 },
-    { rank: 10, brand: "اعیانی",      sales: 9.7,  share: 2.54 },
-    { rank: 11, brand: "عطر خورشید",  sales: 9.2,  share: 2.41 },
-    { rank: 12, brand: "ساتیرا",      sales: 6.6,  share: 1.73 },
-    { rank: 13, brand: "زریران",      sales: 5.0,  share: 1.31 },
-    { rank: 14, brand: "تیسور",       sales: 4.6,  share: 1.21 },
-    { rank: 15, brand: "سفوران",      sales: 4.6,  share: 1.21 },
-    { rank: 16, brand: "زرمه",        sales: 4.6,  share: 1.21 },
-    { rank: 17, brand: "هور",         sales: 4.0,  share: 1.05 },
-    { rank: 18, brand: "زرکس",        sales: 2.0,  share: 0.52 },
-    { rank: 19, brand: "زرافران",     sales: 2.0,  share: 0.52 },
-    { rank: 20, brand: "زرآسا",       sales: 0.0,  share: 0.00 },
-    { rank: 21, brand: "گل پری",      sales: 0.0,  share: 0.00 },
-    { rank: 22, brand: "میترا",       sales: 0.0,  share: 0.00 },
-    { rank: 23, brand: "خاتون",       sales: 0.0,  share: 0.00 },
-    { rank: 24, brand: "زعفرو",       sales: 0.0,  share: 0.00 },
-    { rank: 25, brand: "سفرون",       sales: 0.0,  share: 0.00 },
-    { rank: 26, brand: "zero",        sales: 0.0,  share: 0.00 },
-    { rank: 27, brand: "زفرا",        sales: 0.0,  share: 0.00 },
-    { rank: 28, brand: "آرمیتی",      sales: 0.0,  share: 0.00 },
-    { rank: 29, brand: "زرپر",        sales: 0.0,  share: 0.00 },
-    { rank: 30, brand: "اصالت",       sales: 0.0,  share: 0.00 },
-    { rank: 31, brand: "زروا",        sales: 0.0,  share: 0.00 },
-    { rank: 32, brand: "کام بیز",     sales: 0.0,  share: 0.00 },
-    { rank: 33, brand: "کوهی خیل",    sales: 0.0,  share: 0.00 },
-    { rank: 34, brand: "زرتاب",       sales: 0.0,  share: 0.00 },
-    { rank: 35, brand: "مثقال",       sales: 0.0,  share: 0.00 },
-    { rank: 36, brand: "اذر خوشه",    sales: 0.0,  share: 0.00 }
-  ]
-}
-    ];
+    id: "week1",
+    label: "هفته ۱",
+    dateRange: "۱۴۰۴/۸/۲۱ تا ۱۴۰۴/۸/۲۷",
+    data: [
+      { rank: 1,  brand: "سفیرا",      sales: 45.4, share: 20.95 },
+      { rank: 2,  brand: "زرون",       sales: 34.2, share: 15.78 },
+      { rank: 3,  brand: "زرآسا",      sales: 21.2, share: 9.78 },
+      { rank: 4,  brand: "گل پری",     sales: 14.6, share: 6.74 },
+      { rank: 5,  brand: "اعیانی",     sales: 10.0, share: 4.61 },
+      { rank: 6,  brand: "azaferan",   sales: 8.6, share: 3.97 },
+      { rank: 7,  brand: "میترا",      sales: 8.0, share: 3.69 },
+      { rank: 8,  brand: "عطر خورشید", sales: 8.0, share: 3.69 },
+      { rank: 9,  brand: "زرسازان",    sales: 6.6, share: 3.05 },
+      { rank: 10, brand: "خاتون",      sales: 6.6, share: 3.05 },
+      { rank: 11, brand: "ساتیرا",     sales: 6.0, share: 2.77 },
+      { rank: 12, brand: "زعفرو",      sales: 6.0, share: 2.77 },
+      { rank: 13, brand: "سفرون",      sales: 5.5, share: 2.54 },
+      { rank: 14, brand: "زرافران",    sales: 4.0, share: 1.85 },
+      { rank: 15, brand: "سرو زر",     sales: 4.0, share: 1.85 },
+      { rank: 16, brand: "هور",        sales: 2.0, share: 0.92 },
+      { rank: 17, brand: "تیسور",      sales: 2.0, share: 0.92 },
+      { rank: 18, brand: "زرنوا",      sales: 2.0, share: 0.92 },
+      { rank: 19, brand: "زرنگار",     sales: 2.0, share: 0.92 },
+      { rank: 20, brand: "zero",       sales: 2.0, share: 0.92 },
+      { rank: 21, brand: "سفوران",     sales: 2.0, share: 0.92 },
+      { rank: 22, brand: "زفرا",       sales: 2.0, share: 0.92 },
+      { rank: 23, brand: "پری زاد",    sales: 2.0, share: 0.92 },
+      { rank: 24, brand: "زریران",     sales: 2.0, share: 0.92 },
+      { rank: 25, brand: "آرمیتی",     sales: 2.0, share: 0.92 },
+      { rank: 26, brand: "ساروند",     sales: 2.0, share: 0.92 },
+      { rank: 27, brand: "زرپر",       sales: 2.0, share: 0.92 },
+      { rank: 28, brand: "اصالت",      sales: 2.0, share: 0.92 },
+      { rank: 29, brand: "زرمه",       sales: 2.0, share: 0.92 },
+      { rank: 30, brand: "زرکس",       sales: 0.0, share: 0.00 },
+      { rank: 31, brand: "زروا",       sales: 0.0, share: 0.00 },
+      { rank: 32, brand: "کام بیز",    sales: 0.0, share: 0.00 },
+      { rank: 33, brand: "کوهی خیل",   sales: 0.0, share: 0.00 },
+      { rank: 34, brand: "زرتاب",      sales: 0.0, share: 0.00 },
+      { rank: 35, brand: "مثقال",      sales: 0.0, share: 0.00 }
+    ]
+  },
+  // Week 2
+  {
+    id: "week2",
+    label: "هفته ۲",
+    dateRange: "۱۴۰۴/۸/۲۸ تا ۱۴۰۴/۹/۴",
+    data: [
+      { rank: 1,  brand: "زرون",        sales: 92.0, share: 24.12 },
+      { rank: 2,  brand: "سرو زر",      sales: 50.6, share: 13.26 },
+      { rank: 3,  brand: "azaferan",    sales: 36.8, share: 9.65 },
+      { rank: 4,  brand: "سفیرا",       sales: 32.2, share: 8.44 },
+      { rank: 5,  brand: "زرنگار",      sales: 32.0, share: 8.39 },
+      { rank: 6,  brand: "زرنوا",       sales: 27.6, share: 7.23 },
+      { rank: 7,  brand: "زرسازان",     sales: 23.0, share: 6.03 },
+      { rank: 8,  brand: "پری زاد",     sales: 17.8, share: 4.67 },
+      { rank: 9,  brand: "ساروند",      sales: 17.2, share: 4.51 },
+      { rank: 10, brand: "اعیانی",      sales: 9.7,  share: 2.54 },
+      { rank: 11, brand: "عطر خورشید",  sales: 9.2,  share: 2.41 },
+      { rank: 12, brand: "ساتیرا",      sales: 6.6,  share: 1.73 },
+      { rank: 13, brand: "زریران",      sales: 5.0,  share: 1.31 },
+      { rank: 14, brand: "تیسور",       sales: 4.6,  share: 1.21 },
+      { rank: 15, brand: "سفوران",      sales: 4.6,  share: 1.21 },
+      { rank: 16, brand: "زرمه",        sales: 4.6,  share: 1.21 },
+      { rank: 17, brand: "هور",         sales: 4.0,  share: 1.05 },
+      { rank: 18, brand: "زرکس",        sales: 2.0,  share: 0.52 },
+      { rank: 19, brand: "زرافران",     sales: 2.0,  share: 0.52 },
+      { rank: 20, brand: "زرآسا",       sales: 0.0,  share: 0.00 },
+      { rank: 21, brand: "گل پری",      sales: 0.0,  share: 0.00 },
+      { rank: 22, brand: "میترا",       sales: 0.0,  share: 0.00 },
+      { rank: 23, brand: "خاتون",       sales: 0.0,  share: 0.00 },
+      { rank: 24, brand: "زعفرو",       sales: 0.0,  share: 0.00 },
+      { rank: 25, brand: "سفرون",       sales: 0.0,  share: 0.00 },
+      { rank: 26, brand: "zero",        sales: 0.0,  share: 0.00 },
+      { rank: 27, brand: "زفرا",        sales: 0.0,  share: 0.00 },
+      { rank: 28, brand: "آرمیتی",      sales: 0.0,  share: 0.00 },
+      { rank: 29, brand: "زرپر",        sales: 0.0,  share: 0.00 },
+      { rank: 30, brand: "اصالت",       sales: 0.0,  share: 0.00 },
+      { rank: 31, brand: "زروا",        sales: 0.0,  share: 0.00 },
+      { rank: 32, brand: "کام بیز",     sales: 0.0,  share: 0.00 },
+      { rank: 33, brand: "کوهی خیل",    sales: 0.0,  share: 0.00 },
+      { rank: 34, brand: "زرتاب",       sales: 0.0,  share: 0.00 },
+      { rank: 35, brand: "مثقال",       sales: 0.0,  share: 0.00 },
+      { rank: 36, brand: "اذر خوشه",    sales: 0.0,  share: 0.00 }
+    ]
+  }
+];
 
-    const weekTabsEl = document.getElementById("week-tabs");
-    const panelEl = document.getElementById("leaderboard-panel");
+const weekTabsEl = document.getElementById("week-tabs");
+const panelEl = document.getElementById("leaderboard-panel");
 
-    // Make WEEK 2 the default main page:
-    let activeWeekId = "week2"; // اگر هفته ۱ را می‌خواهی پیش‌فرض باشد، این را بکن "week1"
+// Make WEEK 2 the default main page:
+let activeWeekId = "week2";
 
-    function buildTabs() {
-      weekTabsEl.innerHTML = weeklyLeaderboards
-        .map((w) => {
-          const isActive = w.id === activeWeekId;
-          return `
-            <button
-              class="week-tab ${isActive ? "active" : ""}"
-              data-week-id="${w.id}"
-            >
-              <i class="fas fa-calendar-week text-xs"></i>
-              <span>${w.label}</span>
-            </button>`;
-        })
-        .join("");
-    }
-
-    function createRow(item, index) {
-      const rankClass =
-        item.rank === 1
-          ? "rank-1"
-          : item.rank === 2
-          ? "rank-2"
-          : item.rank === 3
-          ? "rank-3"
-          : "rank-other";
-
-      const iconHtml =
-        item.rank === 1
-          ? '<i class="fas fa-crown"></i>'
-          : item.rank;
-
-      const delay = (index + 1) * 0.04;
-
+function buildTabs() {
+  weekTabsEl.innerHTML = weeklyLeaderboards
+    .map((w) => {
+      const isActive = w.id === activeWeekId;
       return `
-        <div class="leaderboard-row animate-row" style="animation-delay: ${delay}s">
-          <div class="rank-badge ${rankClass}">${iconHtml}</div>
-          <div class="brand-name">${item.brand}</div>
-          <div class="stats-wrapper">
-            <div class="stat-box">
-              <div class="stat-label">مقدار فروش</div>
-              <div class="stat-value">${item.sales} گرم</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-label">سهم در بازار</div>
-              <div class="stat-value">٪${item.share.toFixed(2)}</div>
-            </div>
-          </div>
-        </div>`;
-    }
+        <button
+          class="week-tab ${isActive ? "active" : ""}"
+          data-week-id="${w.id}"
+        >
+          <i class="fas fa-calendar-week text-xs"></i>
+          <span>${w.label}</span>
+        </button>`;
+    })
+    .join("");
+}
 
-    function buildPanels() {
-      const activeWeek = weeklyLeaderboards.find(w => w.id === activeWeekId);
-      if (!activeWeek) {
-        panelEl.innerHTML = "";
-        return;
-      }
+function createRow(item, index) {
+  const rankClass =
+    item.rank === 1
+      ? "rank-1"
+      : item.rank === 2
+      ? "rank-2"
+      : item.rank === 3
+      ? "rank-3"
+      : "rank-other";
 
-      const rowsHtml = activeWeek.data
-        .map((item, i) => createRow(item, i))
-        .join("");
+  const iconHtml =
+    item.rank === 1
+      ? '<i class="fas fa-crown"></i>'
+      : item.rank;
 
-      panelEl.innerHTML = `
-        <div class="leaderboard-inner active" data-week-panel="${activeWeek.id}">
-          <div class="text-xs text-gray-500 mb-2 text-center md:text-right">
-            <i class="far fa-clock ml-1"></i>
-            بازه زمانی: ${activeWeek.dateRange}
-          </div>
-          <div>${rowsHtml}</div>
-        </div>`;
-    }
+  const delay = (index + 1) * 0.04;
 
-    function onTabsClick(e) {
-      const btn = e.target.closest(".week-tab");
-      if (!btn) return;
+  return `
+    <div class="leaderboard-row animate-row" style="animation-delay: ${delay}s">
+      <div class="rank-badge ${rankClass}">${iconHtml}</div>
+      <div class="brand-name">${item.brand}</div>
+      <div class="stats-wrapper">
+        <div class="stat-box">
+          <div class="stat-label">مقدار فروش</div>
+          <div class="stat-value">${item.sales} گرم</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">سهم در بازار</div>
+          <div class="stat-value">٪${item.share.toFixed(2)}</div>
+        </div>
+      </div>
+    </div>`;
+}
 
-      const targetId = btn.getAttribute("data-week-id");
-      if (!targetId || targetId === activeWeekId) return;
+function buildPanels() {
+  const activeWeek = weeklyLeaderboards.find(w => w.id === activeWeekId);
+  if (!activeWeek) {
+    panelEl.innerHTML = "";
+    return;
+  }
 
-      activeWeekId = targetId;
+  const rowsHtml = activeWeek.data
+    .map((item, i) => createRow(item, i))
+    .join("");
 
-      document
-        .querySelectorAll(".week-tab")
-        .forEach((t) => t.classList.remove("active"));
-      btn.classList.add("active");
+  panelEl.innerHTML = `
+    <div class="leaderboard-inner active" data-week-panel="${activeWeek.id}">
+      <div class="text-xs text-gray-500 mb-2 text-center md:text-right">
+        <i class="far fa-clock ml-1"></i>
+        بازه زمانی: ${activeWeek.dateRange}
+      </div>
+      <div>${rowsHtml}</div>
+    </div>`;
+}
 
-      buildPanels();
-    }
+function onTabsClick(e) {
+  const btn = e.target.closest(".week-tab");
+  if (!btn) return;
 
-    window.addEventListener("load", () => {
-      buildTabs();
-      buildPanels();
+  const targetId = btn.getAttribute("data-week-id");
+  if (!targetId || targetId === activeWeekId) return;
 
-      const splash = document.getElementById("splash-screen");
-      setTimeout(() => {
-        splash.classList.add("splash-fade-out");
-        setTimeout(() => {
-          splash.style.display = "none";
-        }, 700);
-      }, 2300);
-    });
+  activeWeekId = targetId;
 
-    weekTabsEl.addEventListener("click", onTabsClick);
+  document
+    .querySelectorAll(".week-tab")
+    .forEach((t) => t.classList.remove("active"));
+  btn.classList.add("active");
+
+  buildPanels();
+}
+
+window.addEventListener("load", () => {
+  buildTabs();
+  buildPanels();
+
+  const splash = document.getElementById("splash-screen");
+  setTimeout(() => {
+    splash.classList.add("splash-fade-out");
+    setTimeout(() => {
+      splash.style.display = "none";
+    }, 700);
+  }, 2300);
+});
+
+weekTabsEl.addEventListener("click", onTabsClick);
   </script>
 </body>
 </html>
