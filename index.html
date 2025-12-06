@@ -581,13 +581,57 @@ data: [
     { rank: 37, brand: "مثقال",        sales: 0.0,   share: 0.00 }
   ]
 }
+  {
+  id: "week4",
+  label: "هفته ۴",
+  dateRange: "۱۴۰۴/۹/۱۲ تا ۱۴۰۴/۹/۱۸",
+  data: [
+    { rank: 1,  brand: "زرکس",       sales: 36.8, share: 42.54 },
+    { rank: 2,  brand: "زعفرو",      sales: 11.6, share: 13.41 },
+    { rank: 3,  brand: "زرنگار",     sales: 9.2,  share: 10.64 },
+    { rank: 4,  brand: "سرو زر",     sales: 9.2,  share: 10.64 },
+    { rank: 5,  brand: "زرمه",       sales: 9.2,  share: 10.64 },
+    { rank: 6,  brand: "گل پری",     sales: 4.6,  share: 5.32 },
+    { rank: 7,  brand: "اعیانی",     sales: 4.3,  share: 4.97 },
+    { rank: 8,  brand: "سفرون",      sales: 1.6,  share: 1.85 },
+    { rank: 9,  brand: "پری زاد",    sales: 0.0,  share: 0.00 },
+    { rank: 10, brand: "زرآسا",      sales: 0.0,  share: 0.00 },
+    { rank: 11, brand: "زرون",       sales: 0.0,  share: 0.00 },
+    { rank: 12, brand: "زرافران",    sales: 0.0,  share: 0.00 },
+    { rank: 13, brand: "سفیرا",      sales: 0.0,  share: 0.00 },
+    { rank: 14, brand: "azaferan",   sales: 0.0,  share: 0.00 },
+    { rank: 15, brand: "آرمیتی",     sales: 0.0,  share: 0.00 },
+    { rank: 16, brand: "سفوران",     sales: 0.0,  share: 0.00 },
+    { rank: 17, brand: "زرنوا",      sales: 0.0,  share: 0.00 },
+    { rank: 18, brand: "میترا",      sales: 0.0,  share: 0.00 },
+    { rank: 19, brand: "زرسازان",    sales: 0.0,  share: 0.00 },
+    { rank: 20, brand: "تیسور",      sales: 0.0,  share: 0.00 },
+    { rank: 21, brand: "خاتون",      sales: 0.0,  share: 0.00 },
+    { rank: 22, brand: "ساروند",     sales: 0.0,  share: 0.00 },
+    { rank: 23, brand: "اذر خوشه",   sales: 0.0,  share: 0.00 },
+    { rank: 24, brand: "زریران",     sales: 0.0,  share: 0.00 },
+    { rank: 25, brand: "هور",        sales: 0.0,  share: 0.00 },
+    { rank: 26, brand: "ساتیرا",     sales: 0.0,  share: 0.00 },
+    { rank: 27, brand: "عطر خورشید", sales: 0.0,  share: 0.00 },
+    { rank: 28, brand: "زفرا",       sales: 0.0,  share: 0.00 },
+    { rank: 29, brand: "سرخزاد",     sales: 0.0,  share: 0.00 },
+    { rank: 30, brand: "zero",       sales: 0.0,  share: 0.00 },
+    { rank: 31, brand: "زرپر",       sales: 0.0,  share: 0.00 },
+    { rank: 32, brand: "اصالت",      sales: 0.0,  share: 0.00 },
+    { rank: 33, brand: "زروا",       sales: 0.0,  share: 0.00 },
+    { rank: 34, brand: "کام بیز",    sales: 0.0,  share: 0.00 },
+    { rank: 35, brand: "کوهی خیل",   sales: 0.0,  share: 0.00 },
+    { rank: 36, brand: "زرتاب",      sales: 0.0,  share: 0.00 },
+    { rank: 37, brand: "مثقال",      sales: 0.0,  share: 0.00 }
+  ]
+}
 ];
 
 const weekTabsEl = document.getElementById("week-tabs");
 const panelEl = document.getElementById("leaderboard-panel");
 
 // Make WEEK 2 the default main page:
-let activeWeekId = "week2";
+let activeWeekId = "week4";
 
 function buildTabs() {
   weekTabsEl.innerHTML = weeklyLeaderboards
