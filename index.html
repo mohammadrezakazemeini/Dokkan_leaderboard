@@ -668,7 +668,6 @@ data: [
 const weekTabsEl = document.getElementById("week-tabs");
 const panelEl = document.getElementById("leaderboard-panel");
 
-// Make WEEK 2 the default main page:
 let activeWeekId = "week5";
 
 function buildTabs() {
@@ -734,6 +733,11 @@ function buildPanels() {
 
   panelEl.innerHTML = `
     <div class="leaderboard-inner active" data-week-panel="${activeWeek.id}">
+      <div class="text-xs text-gray-500 mb-2 text-center md:text-right">
+        <i class="far fa-clock ml-1"></i>
+        بازه زمانی: ${activeWeek.dateRange}
+      </div>
+      <div>${rowsHtml}</div>
     </div>`;
 }
 
