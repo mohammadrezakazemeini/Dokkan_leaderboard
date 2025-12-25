@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لیدربرد دکّان - هفتگی</title>
+  <title>لیدربرد دکّان</title>
 
   <link
     href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
@@ -112,6 +112,78 @@
       0% { transform: translateY(0); }
       50% { transform: translateY(-8px) scale(1.03); }
       100% { transform: translateY(0); }
+    }
+
+    /* ==== PAGE NAVIGATION TABS ==== */
+    .page-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.5rem 2rem 0;
+      background: rgba(249, 250, 251, 0.5);
+      backdrop-filter: blur(10px);
+    }
+
+    .page-nav-btn {
+      padding: 0.75rem 2rem;
+      border-radius: 12px 12px 0 0;
+      border: none;
+      background: rgba(203, 213, 225, 0.6);
+      color: #475569;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-nav-btn::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #6366f1, #ec4899);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .page-nav-btn.active {
+      background: white;
+      color: #6366f1;
+      box-shadow: 0 -4px 12px rgba(99, 102, 241, 0.15);
+    }
+
+    .page-nav-btn.active::after {
+      transform: scaleX(1);
+    }
+
+    .page-nav-btn:hover:not(.active) {
+      background: rgba(226, 232, 240, 0.8);
+      transform: translateY(-2px);
+    }
+
+    /* ==== PAGE CONTAINERS ==== */
+    .page-container {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .page-container.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .rank-badge {
@@ -301,6 +373,7 @@
 
     .leaderboard-panel {
       position: relative;
+      margin-bottom: 1.5rem;
     }
 
     .leaderboard-inner {
@@ -406,6 +479,309 @@
       }
     }
 
+    /* ==== TOGGLE SWITCH ==== */
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding: 0.75rem;
+      background: rgba(249, 250, 251, 0.7);
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    }
+
+    .toggle-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #475569;
+      transition: color 0.25s ease;
+    }
+
+    .toggle-label.active {
+      color: #6366f1;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 56px;
+      height: 28px;
+      background: #cbd5e1;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .toggle-switch.active {
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+    }
+
+    .toggle-knob {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-switch.active .toggle-knob {
+      transform: translateX(-28px);
+    }
+
+    /* ==== FINAL LEADERBOARD (امتیاز کل) ==== */
+
+    .final-section {
+      margin-top: 1.5rem;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      background: radial-gradient(circle at top, #fef3c7 0, #fff7ed 35%, #faf5ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-section::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(252, 211, 77, 0.25), transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(251, 191, 36, 0.2), transparent 55%);
+      animation: finalGlow 12s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes finalGlow {
+      0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 0.7; }
+      100% { transform: translate3d(10px, -10px, 0) scale(1.05); opacity: 1; }
+    }
+
+    .final-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .final-header h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #92400e;
+      text-shadow: 0 4px 12px rgba(180, 83, 9, 0.3);
+      animation: titlePop 900ms cubic-bezier(.16,1,.3,1);
+    }
+
+    .final-header p {
+      color: #78350f;
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+
+    @keyframes titlePop {
+      0%   { transform: translateY(18px) scale(0.9); opacity: 0; }
+      60%  { transform: translateY(-4px) scale(1.04); opacity: 1; }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    .final-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .final-item {
+      display: grid;
+      grid-template-columns: auto 1.5fr 1fr;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 25px rgba(180, 83, 9, 0.12);
+      transform-origin: center;
+      opacity: 0;
+      transform: translateY(12px) scale(0.97);
+      animation: rowIn 650ms cubic-bezier(.16,1,.3,1) forwards;
+    }
+
+    @keyframes rowIn {
+      0%   { opacity: 0; transform: translateY(12px) scale(0.97); }
+      70%  { opacity: 1; transform: translateY(-3px) scale(1.02); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .final-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #fff;
+      box-shadow: 0 0 0 3px rgba(253, 230, 138, 0.9);
+    }
+
+    .final-item.rank-1 .final-badge {
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+    }
+    .final-item.rank-2 .final-badge {
+      background: linear-gradient(135deg, #6b7280, #9ca3af);
+    }
+    .final-item.rank-3 .final-badge {
+      background: linear-gradient(135deg, #b45309, #fbbf24);
+    }
+    .final-item:not(.rank-1):not(.rank-2):not(.rank-3) .final-badge {
+      background: linear-gradient(135deg, #facc15, #f97316);
+      opacity: 0.85;
+    }
+
+    .final-team {
+      text-align: right;
+    }
+
+    .final-team-name {
+      font-weight: 700;
+      color: #7c2d12;
+    }
+
+    .final-score {
+      text-align: left;
+      font-variant-numeric: tabular-nums;
+      color: #7c2d12;
+    }
+
+    .final-item.rank-1,
+    .final-item.rank-2,
+    .final-item.rank-3 {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-item.rank-1::after,
+    .final-item.rank-2::after,
+    .final-item.rank-3::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.7) 40%, transparent 80%);
+      transform: translateX(-150%);
+      opacity: 0;
+      pointer-events: none;
+      animation: shimmer 2.8s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%   { transform: translateX(-150%); opacity: 0; }
+      40%  { opacity: 0; }
+      55%  { opacity: 0.85; }
+      100% { transform: translateX(150%); opacity: 0; }
+    }
+
+    .final-item:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 14px 30px rgba(180, 83, 9, 0.18);
+    }
+
+    /* ==== FINAL WEEK-BY-WEEK TABLE ==== */
+
+    .final-weeks {
+      margin-top: 2rem;
+      padding: 1.5rem 1.75rem;
+      border-radius: 1.5rem;
+      background: linear-gradient(145deg, #fefce8, #f5f3ff);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+    }
+
+    .final-weeks-header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .final-weeks-header h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #7c2d12;
+    }
+
+    .final-weeks-header p {
+      font-size: 0.9rem;
+      color: #7c2d12;
+      opacity: 0.8;
+    }
+
+    .final-weeks-table-wrapper {
+      overflow-x: auto;
+    }
+
+    .final-weeks-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      direction: rtl;
+    }
+
+    .final-weeks-table thead {
+      background: rgba(251, 191, 36, 0.12);
+    }
+
+    .final-weeks-table th,
+    .final-weeks-table td {
+      padding: 0.55rem 0.5rem;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .final-weeks-table th {
+      font-weight: 700;
+      color: #78350f;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .final-weeks-table tbody tr {
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      opacity: 0;
+      transform: translateY(6px);
+      animation: finalRowFade 550ms cubic-bezier(.16,1,.3,1) forwards;
+    }
+
+    .final-weeks-table tbody tr:nth-child(odd) {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .final-weeks-table tbody tr:nth-child(even) {
+      background-color: rgba(249, 250, 251, 0.9);
+    }
+
+    .final-weeks-table tbody tr:hover {
+      background-color: #fef3c7;
+      transform: translateY(-1px) scale(1.005);
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+
+    @keyframes finalRowFade {
+      0%   { opacity: 0; transform: translateY(8px) scale(0.985); }
+      70%  { opacity: 1; transform: translateY(-2px) scale(1.01); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .final-weeks-table tbody tr.top-1 td {
+      font-weight: 800;
+      color: #92400e;
+    }
+    .final-weeks-table tbody tr.top-2 td {
+      font-weight: 700;
+      color: #b45309;
+    }
+    .final-weeks-table tbody tr.top-3 td {
+      font-weight: 700;
+      color: #d97706;
+    }
+
     @media (max-width: 640px) {
       .leaderboard-row {
         padding: 0.9rem 1rem;
@@ -441,6 +817,34 @@
         min-height: 44px;
         font-size: 1rem;
       }
+
+      .final-section {
+        padding: 1.5rem;
+      }
+
+      .final-item {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+      }
+
+      .final-score {
+        grid-column: 2 / 3;
+        text-align: right;
+      }
+
+      .final-weeks {
+        padding: 1.25rem 1rem;
+      }
+
+      .page-nav {
+        gap: 0.5rem;
+        padding: 1rem 1rem 0;
+      }
+
+      .page-nav-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
@@ -468,309 +872,1036 @@
           لیدربرد دکّان
         </h1>
         <p class="text-white text-opacity-90 text-sm md:text-base">
-          رتبه‌بندی هفتگی برندهای زعفران بر اساس فروش و سهم بازار
+          رتبه‌بندی برندهای زعفران بر اساس فروش و سهم بازار
         </p>
       </div>
 
-      <div class="p-6">
-        <!-- Week Tabs -->
-        <div class="week-tabs" id="week-tabs"></div>
+      <!-- ==== PAGE NAVIGATION ==== -->
+      <nav class="page-nav">
+        <button class="page-nav-btn active" data-page="weekly-page">
+          <i class="fas fa-calendar-week" style="margin-left:0.4rem"></i>
+          لیدربرد هفتگی
+        </button>
+        <button class="page-nav-btn" data-page="final-page">
+          <i class="fas fa-trophy" style="margin-left:0.4rem"></i>
+          لیدربرد نهایی
+        </button>
+      </nav>
 
-        <!-- Leaderboard Panel -->
-        <div class="leaderboard-panel" id="leaderboard-panel"></div>
+      <!-- ==== WEEKLY LEADERBOARD PAGE ==== -->
+      <div id="weekly-page" class="page-container active">
+        <div class="p-6">
+          <!-- Toggle Switch -->
+          <div class="toggle-container">
+            <span class="toggle-label" id="label-sales">فروش (گرم)</span>
+            <div class="toggle-switch" id="toggle-switch">
+              <div class="toggle-knob"></div>
+            </div>
+            <span class="toggle-label active" id="label-points">امتیاز</span>
+          </div>
+
+          <!-- Week Tabs -->
+          <div class="week-tabs" id="week-tabs"></div>
+
+          <!-- Leaderboard Panel -->
+          <div class="leaderboard-panel" id="leaderboard-panel"></div>
+        </div>
+
+        <div class="bg-gray-50 p-4 text-center text-gray-600 text-xs md:text-sm">
+          <i class="fas fa-sync-alt"></i>
+          آخرین به‌روزرسانی: ۱۴۰۴/۹/۲۷
+        </div>
       </div>
 
-      <div class="bg-gray-50 p-4 text-center text-gray-600 text-xs md:text-sm">
-        <i class="fas fa-sync-alt"></i>
-        آخرین به‌روزرسانی: ۱۴۰۴/۹/۲۷
+      <!-- ==== FINAL LEADERBOARD PAGE ==== -->
+      <div id="final-page" class="page-container">
+        <div class="p-6">
+          <!-- Toggle between Overall and Week-by-Week -->
+          <div class="toggle-container" style="margin-bottom: 2rem;">
+            <span class="toggle-label active" id="label-overall">رتبه‌بندی نهایی</span>
+            <div class="toggle-switch" id="toggle-final-view">
+              <div class="toggle-knob"></div>
+            </div>
+            <span class="toggle-label" id="label-weekly-breakdown">جدول هفته‌ای</span>
+          </div>
+
+          <!-- Final Overall Ranking (امتیاز کل مسابقه) -->
+          <section id="final-section" class="final-section">
+            <div class="final-header">
+              <h2>رتبه‌بندی نهایی مسابقه دکّان</h2>
+              <p>امتیاز کل مسابقه برای هر تیم در پایان ۵ هفته</p>
+            </div>
+            <div id="final-list" class="final-list"></div>
+          </section>
+
+          <!-- Final Week-by-Week Scores Table -->
+          <section id="final-weeks" class="final-weeks">
+            <div class="final-weeks-header">
+              <h3>امتیاز تیم‌ها در ۵ هفته مسابقه</h3>
+              <p>نمایش جزئیات عملکرد هر تیم در طول مسابقه</p>
+            </div>
+            <div class="final-weeks-table-wrapper">
+              <table class="final-weeks-table">
+                <thead>
+                  <tr>
+                    <th>رتبه</th>
+                    <th>تیم</th>
+                    <th>هفته ۱</th>
+                    <th>هفته ۲–۳</th>
+                    <th>هفته ۴</th>
+                    <th>هفته ۵</th>
+                    <th>امتیاز کل</th>
+                  </tr>
+                </thead>
+                <tbody id="final-weeks-body"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <div class="bg-gray-50 p-4 text-center text-gray-600 text-xs md:text-sm">
+          <i class="fas fa-sync-alt"></i>
+          آخرین به‌روزرسانی: ۱۴۰۴/۹/۲۷
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    // ==== WEEKLY DATA ====
-const weeklyLeaderboards = [
-  // Week 1
-  {
-    id: "week1",
-    label: "هفته ۱",
-    dateRange: "۱۴۰۴/۸/۲۱ تا ۱۴۰۴/۸/۲۷",
-    data: [
-      { rank: 1,  brand: "سفیرا",      sales: 45.4, share: 20.95 },
-      { rank: 2,  brand: "زرون",       sales: 34.2, share: 15.78 },
-      { rank: 3,  brand: "زرآسا",      sales: 21.2, share: 9.78 },
-      { rank: 4,  brand: "گل پری",     sales: 14.6, share: 6.74 },
-      { rank: 5,  brand: "اعیانی",     sales: 10.0, share: 4.61 },
-      { rank: 6,  brand: "azaferan",   sales: 8.6, share: 3.97 },
-      { rank: 7,  brand: "میترا",      sales: 8.0, share: 3.69 },
-      { rank: 8,  brand: "عطر خورشید", sales: 8.0, share: 3.69 },
-      { rank: 9,  brand: "زرسازان",    sales: 6.6, share: 3.05 },
-      { rank: 10, brand: "خاتون",      sales: 6.6, share: 3.05 },
-      { rank: 11, brand: "ساتیرا",     sales: 6.0, share: 2.77 },
-      { rank: 12, brand: "زعفرو",      sales: 6.0, share: 2.77 },
-      { rank: 13, brand: "سفرون",      sales: 5.5, share: 2.54 },
-      { rank: 14, brand: "زرافران",    sales: 4.0, share: 1.85 },
-      { rank: 15, brand: "سرو زر",     sales: 4.0, share: 1.85 },
-      { rank: 16, brand: "هور",        sales: 2.0, share: 0.92 },
-      { rank: 17, brand: "تیسور",      sales: 2.0, share: 0.92 },
-      { rank: 18, brand: "زرنوا",      sales: 2.0, share: 0.92 },
-      { rank: 19, brand: "زرنگار",     sales: 2.0, share: 0.92 },
-      { rank: 20, brand: "zero",       sales: 2.0, share: 0.92 },
-      { rank: 21, brand: "سفوران",     sales: 2.0, share: 0.92 },
-      { rank: 22, brand: "زفرا",       sales: 2.0, share: 0.92 },
-      { rank: 23, brand: "پری زاد",    sales: 2.0, share: 0.92 },
-      { rank: 24, brand: "زریران",     sales: 2.0, share: 0.92 },
-      { rank: 25, brand: "آرمیتی",     sales: 2.0, share: 0.92 },
-      { rank: 26, brand: "ساروند",     sales: 2.0, share: 0.92 },
-      { rank: 27, brand: "زرپر",       sales: 2.0, share: 0.92 },
-      { rank: 28, brand: "اصالت",      sales: 2.0, share: 0.92 },
-      { rank: 29, brand: "زرمه",       sales: 2.0, share: 0.92 },
-      { rank: 30, brand: "زرکس",       sales: 0.0, share: 0.00 },
-      { rank: 31, brand: "زروا",       sales: 0.0, share: 0.00 },
-      { rank: 32, brand: "کام بیز",    sales: 0.0, share: 0.00 },
-      { rank: 33, brand: "کوهی خیل",   sales: 0.0, share: 0.00 },
-      { rank: 34, brand: "زرتاب",      sales: 0.0, share: 0.00 },
-      { rank: 35, brand: "مثقال",      sales: 0.0, share: 0.00 },
-      { rank: 36, brand: "سرخزاد",     sales: 0.0,  share: 0.00 }
+    // ==== DATA MODE: "sales" or "points" ====
+    let dataMode = "points"; // default
 
-      
-    ]
-  },
-  // Week 2
- {
-  id: "week2",
-  label: "هفته ۲-۳",
-  dateRange: "۱۴۰۴/۸/۲۸ تا ۱۴۰۴/۹/۴",
-data: [
-    { rank: 1,  brand: "پری زاد",      sales: 197.0, share: 13.02 },
-    { rank: 2,  brand: "زرآسا",        sales: 188.4, share: 12.45 },
-    { rank: 3,  brand: "گل پری",       sales: 154.8, share: 10.23 },
-    { rank: 4,  brand: "زرون",         sales: 119.6, share: 7.90 },
-    { rank: 5,  brand: "زرافران",      sales: 84.2,  share: 5.57 },
-    { rank: 6,  brand: "سفرون",        sales: 76.6,  share: 5.06 },
-    { rank: 7,  brand: "زعفرو",        sales: 73.6,  share: 4.86 },
-    { rank: 8,  brand: "زرنگار",       sales: 71.0,  share: 4.69 },
-    { rank: 9,  brand: "سرو زر",       sales: 64.4,  share: 4.26 },
-    { rank: 10, brand: "سفیرا",        sales: 59.8,  share: 3.95 },
-    { rank: 11, brand: "زرکس",         sales: 59.6,  share: 3.94 },
-    { rank: 12, brand: "azaferan",     sales: 55.2,  share: 3.65 },
-    { rank: 13, brand: "آرمیتی",       sales: 36.8,  share: 2.43 },
-    { rank: 14, brand: "سفوران",       sales: 32.2,  share: 2.13 },
-    { rank: 15, brand: "زرنوا",        sales: 27.6,  share: 1.82 },
-    { rank: 16, brand: "میترا",        sales: 25.9,  share: 1.71 },
-    { rank: 17, brand: "زرسازان",      sales: 23.0,  share: 1.52 },
-    { rank: 18, brand: "تیسور",        sales: 23.0,  share: 1.52 },
-    { rank: 19, brand: "خاتون",        sales: 20.4,  share: 1.35 },
-    { rank: 20, brand: "ساروند",       sales: 17.2,  share: 1.14 },
-    { rank: 21, brand: "اذر خوشه",     sales: 16.8,  share: 1.11 },
-    { rank: 22, brand: "اعیانی",       sales: 16.7,  share: 1.10 },
-    { rank: 23, brand: "زریران",       sales: 13.8,  share: 0.91 },
-    { rank: 24, brand: "هور",          sales: 13.2,  share: 0.87 },
-    { rank: 25, brand: "زرمه",         sales: 12.6,  share: 0.83 },
-    { rank: 26, brand: "ساتیرا",       sales: 11.2,  share: 0.74 },
-    { rank: 27, brand: "عطر خورشید",   sales: 9.2,   share: 0.61 },
-    { rank: 28, brand: "زفرا",         sales: 4.6,   share: 0.30 },
-    { rank: 29, brand: "سرخزاد",       sales: 4.6,   share: 0.30 },
-    { rank: 30, brand: "zero",         sales: 0.0,   share: 0.00 },
-    { rank: 31, brand: "زرپر",         sales: 0.0,   share: 0.00 },
-    { rank: 32, brand: "اصالت",        sales: 0.0,   share: 0.00 },
-    { rank: 33, brand: "زروا",         sales: 0.0,   share: 0.00 },
-    { rank: 34, brand: "کام بیز",      sales: 0.0,   share: 0.00 },
-    { rank: 35, brand: "کوهی خیل",     sales: 0.0,   share: 0.00 },
-    { rank: 36, brand: "زرتاب",        sales: 0.0,   share: 0.00 },
-    { rank: 37, brand: "مثقال",        sales: 0.0,   share: 0.00 }
-  ]
-},
-  
-{
-  id: "week4",
-  label: "هفته ۴",
-  dateRange: "۱۴۰۴/۹/۱۲ تا ۱۴۰۴/۹/۱۸", // Assuming the same date range as before
-  data: [
-{ rank: 1,  brand: "سفرون",        sales: 233.6, share: 28.34 },
-    { rank: 2,  brand: "پری زاد",      sales: 131.1, share: 15.90 },
-    { rank: 3,  brand: "زرآسا",        sales: 119.6, share: 14.51 },
-    { rank: 4,  brand: "گل پری",       sales: 101.2, share: 12.28 },
-    { rank: 5,  brand: "زرافران",      sales: 60.8,  share: 7.38 },
-    { rank: 6,  brand: "زرکس",         sales: 50.6,  share: 6.14 },
-    { rank: 7,  brand: "زعفرو",        sales: 20.8,  share: 2.52 },
-    { rank: 8,  brand: "زریران",       sales: 18.9,  share: 2.29 },
-    { rank: 9,  brand: "زرمه",         sales: 18.4,  share: 2.23 },
-    { rank: 10, brand: "عطر خورشید",   sales: 13.8,  share: 1.67 },
-    { rank: 11, brand: "میترا",        sales: 13.7,  share: 1.66 },
-    { rank: 12, brand: "زرنگار",       sales: 11.2,  share: 1.36 },
-    { rank: 13, brand: "اعیانی",       sales: 9.3,   share: 1.13 },
-    { rank: 14, brand: "سرو زر",       sales: 9.2,   share: 1.12 },
-    { rank: 15, brand: "ساتیرا",       sales: 7.5,   share: 0.91 },
-    { rank: 16, brand: "زفرا",         sales: 4.6,   share: 0.56 },
-    { rank: 17, brand: "زرون",         sales: 0.0,   share: 0.00 },
-    { rank: 18, brand: "سفیرا",        sales: 0.0,   share: 0.00 },
-    { rank: 19, brand: "azaferan",     sales: 0.0,   share: 0.00 },
-    { rank: 20, brand: "آرمیتی",       sales: 0.0,   share: 0.00 },
-    { rank: 21, brand: "سفوران",       sales: 0.0,   share: 0.00 },
-    { rank: 22, brand: "زرنوا",        sales: 0.0,   share: 0.00 },
-    { rank: 24, brand: "زرسازان",      sales: 0.0,   share: 0.00 },
-    { rank: 25, brand: "تیسور",        sales: 0.0,   share: 0.00 },
-    { rank: 26, brand: "خاتون",        sales: 0.0,   share: 0.00 },
-    { rank: 27, brand: "ساروند",       sales: 0.0,   share: 0.00 },
-    { rank: 28, brand: "اذر خوشه",     sales: 0.0,   share: 0.00 },
-    { rank: 29, brand: "هور",          sales: 0.0,   share: 0.00 },
-    { rank: 30, brand: "سرخزاد",       sales: 0.0,   share: 0.00 },
-    { rank: 31, brand: "zero",         sales: 0.0,   share: 0.00 },
-    { rank: 32, brand: "زرپر",         sales: 0.0,   share: 0.00 },
-    { rank: 33, brand: "اصالت",        sales: 0.0,   share: 0.00 },
-    { rank: 34, brand: "زروا",         sales: 0.0,   share: 0.00 },
-  ]
-},
-{
-  id: "week5",
-  label: "هفته ۵",
-  dateRange: "۱۴۰۴/۹/۱۹ تا ۱۴۰۴/۹/۲۵",
-  data: [
-    { rank: 1,  brand: "سفیرا",      sales: 1023.0,  share: 17.38 },
-    { rank: 2,  brand: "گل پری",     sales: 975.2,   share: 16.57 },
-    { rank: 3,  brand: "زرآسا",      sales: 951.28,  share: 16.16 },
-    { rank: 4,  brand: "زرکس",       sales: 828.0,   share: 14.07 },
-    { rank: 5,  brand: "زرافران",    sales: 563.5,   share: 9.57 },
-    { rank: 6,  brand: "سرو زر",     sales: 420.9,   share: 7.15 },
-    { rank: 7,  brand: "پری زاد",    sales: 257.6,   share: 4.38 },
-    { rank: 8,  brand: "سفرون",      sales: 239.2,   share: 4.06 },
-    { rank: 9,  brand: "azaferan",   sales: 174.8,   share: 2.97 },
-    { rank: 10, brand: "زریران",     sales: 170.8,   share: 2.90 },
-    { rank: 11, brand: "میترا",      sales: 102.5,   share: 1.74 },
-    { rank: 12, brand: "زرون",       sales: 96.6,    share: 1.64 },
-    { rank: 13, brand: "اذر خوشه",   sales: 59.0,    share: 1.00 },
-    { rank: 14, brand: "ساروند",     sales: 23.0,    share: 0.39 },
-    { rank: 15, brand: "زعفرو",      sales: 0.0,     share: 0.00 },
-    { rank: 16, brand: "زرمه",       sales: 0.0,     share: 0.00 },
-    { rank: 17, brand: "عطر خورشید", sales: 0.0,     share: 0.00 },
-    { rank: 18, brand: "زرنگار",     sales: 0.0,     share: 0.00 },
-    { rank: 19, brand: "اعیانی",     sales: 0.0,     share: 0.00 },
-    { rank: 20, brand: "ساتیرا",     sales: 0.0,     share: 0.00 },
-    { rank: 21, brand: "زفرا",       sales: 0.0,     share: 0.00 },
-    { rank: 22, brand: "زرسازان",    sales: 0.0,     share: 0.00 },
-    { rank: 23, brand: "زرنوا",      sales: 0.0,     share: 0.00 },
-    { rank: 24, brand: "هور",        sales: 0.0,     share: 0.00 },
-    { rank: 25, brand: "زرپر",       sales: 0.0,     share: 0.00 },
-    { rank: 26, brand: "zero",       sales: 0.0,     share: 0.00 },
-    { rank: 27, brand: "سرخزاد",     sales: 0.0,     share: 0.00 },
-    { rank: 28, brand: "آرمیتی",     sales: 0.0,     share: 0.00 },
-    { rank: 29, brand: "سفوران",     sales: 0.0,     share: 0.00 },
-    { rank: 30, brand: "زروا",       sales: 0.0,     share: 0.00 },
-    { rank: 31, brand: "اصالت",      sales: 0.0,     share: 0.00 },
-    { rank: 32, brand: "تیسور",      sales: 0.0,     share: 0.00 },
-    { rank: 33, brand: "خاتون",      sales: 0.0,     share: 0.00 }
-  ]
-}
+    // ==== WEEKLY SALES DATA (فروش گرم / سهم بازار) ====
+    const weeklySalesData = [
+      // Week 1
+      {
+        id: "week1",
+        label: "هفته ۱",
+        dateRange: "۱۴۰۴/۸/۲۱ تا ۱۴۰۴/۸/۲۷",
+        data: [
+          { rank: 1,  brand: "سفیرا",      sales: 45.4, share: 20.95 },
+          { rank: 2,  brand: "زرون",       sales: 34.2, share: 15.78 },
+          { rank: 3,  brand: "زرآسا",      sales: 21.2, share: 9.78 },
+          { rank: 4,  brand: "گل پری",     sales: 14.6, share: 6.74 },
+          { rank: 5,  brand: "اعیانی",     sales: 10.0, share: 4.61 },
+          { rank: 6,  brand: "azaferan",   sales: 8.6, share: 3.97 },
+          { rank: 7,  brand: "میترا",      sales: 8.0, share: 3.69 },
+          { rank: 8,  brand: "عطر خورشید", sales: 8.0, share: 3.69 },
+          { rank: 9,  brand: "زرسازان",    sales: 6.6, share: 3.05 },
+          { rank: 10, brand: "خاتون",      sales: 6.6, share: 3.05 },
+          { rank: 11, brand: "ساتیرا",     sales: 6.0, share: 2.77 },
+          { rank: 12, brand: "زعفرو",      sales: 6.0, share: 2.77 },
+          { rank: 13, brand: "سفرون",      sales: 5.5, share: 2.54 },
+          { rank: 14, brand: "زرافران",    sales: 4.0, share: 1.85 },
+          { rank: 15, brand: "سرو زر",     sales: 4.0, share: 1.85 },
+          { rank: 16, brand: "هور",        sales: 2.0, share: 0.92 },
+          { rank: 17, brand: "تیسور",      sales: 2.0, share: 0.92 },
+          { rank: 18, brand: "زرنوا",      sales: 2.0, share: 0.92 },
+          { rank: 19, brand: "زرنگار",     sales: 2.0, share: 0.92 },
+          { rank: 20, brand: "zero",       sales: 2.0, share: 0.92 },
+          { rank: 21, brand: "سفوران",     sales: 2.0, share: 0.92 },
+          { rank: 22, brand: "زفرا",       sales: 2.0, share: 0.92 },
+          { rank: 23, brand: "پری زاد",    sales: 2.0, share: 0.92 },
+          { rank: 24, brand: "زریران",     sales: 2.0, share: 0.92 },
+          { rank: 25, brand: "آرمیتی",     sales: 2.0, share: 0.92 },
+          { rank: 26, brand: "ساروند",     sales: 2.0, share: 0.92 },
+          { rank: 27, brand: "زرپر",       sales: 2.0, share: 0.92 },
+          { rank: 28, brand: "اصالت",      sales: 2.0, share: 0.92 },
+          { rank: 29, brand: "زرمه",       sales: 2.0, share: 0.92 },
+          { rank: 30, brand: "زرکس",       sales: 0.0, share: 0.00 },
+          { rank: 31, brand: "زروا",       sales: 0.0, share: 0.00 },
+          { rank: 32, brand: "کام بیز",    sales: 0.0, share: 0.00 },
+          { rank: 33, brand: "کوهی خیل",   sales: 0.0, share: 0.00 },
+          { rank: 34, brand: "زرتاب",      sales: 0.0, share: 0.00 },
+          { rank: 35, brand: "مثقال",      sales: 0.0, share: 0.00 },
+          { rank: 36, brand: "سرخزاد",     sales: 0.0, share: 0.00 }
+        ]
+      },
+      // Week 2-3
+      {
+        id: "week2",
+        label: "هفته ۲-۳",
+        dateRange: "۱۴۰۴/۸/۲۸ تا ۱۴۰۴/۹/۴",
+        data: [
+          { rank: 1,  brand: "پری زاد",      sales: 197.0, share: 13.02 },
+          { rank: 2,  brand: "زرآسا",        sales: 188.4, share: 12.45 },
+          { rank: 3,  brand: "گل پری",       sales: 154.8, share: 10.23 },
+          { rank: 4,  brand: "زرون",         sales: 119.6, share: 7.90 },
+          { rank: 5,  brand: "زرافران",      sales: 84.2,  share: 5.57 },
+          { rank: 6,  brand: "سفرون",        sales: 76.6,  share: 5.06 },
+          { rank: 7,  brand: "زعفرو",        sales: 73.6,  share: 4.86 },
+          { rank: 8,  brand: "زرنگار",       sales: 71.0,  share: 4.69 },
+          { rank: 9,  brand: "سرو زر",       sales: 64.4,  share: 4.26 },
+          { rank: 10, brand: "سفیرا",        sales: 59.8,  share: 3.95 },
+          { rank: 11, brand: "زرکس",         sales: 59.6,  share: 3.94 },
+          { rank: 12, brand: "azaferan",     sales: 55.2,  share: 3.65 },
+          { rank: 13, brand: "آرمیتی",       sales: 36.8,  share: 2.43 },
+          { rank: 14, brand: "سفوران",       sales: 32.2,  share: 2.13 },
+          { rank: 15, brand: "زرنوا",        sales: 27.6,  share: 1.82 },
+          { rank: 16, brand: "میترا",        sales: 25.9,  share: 1.71 },
+          { rank: 17, brand: "زرسازان",      sales: 23.0,  share: 1.52 },
+          { rank: 18, brand: "تیسور",        sales: 23.0,  share: 1.52 },
+          { rank: 19, brand: "خاتون",        sales: 20.4,  share: 1.35 },
+          { rank: 20, brand: "ساروند",       sales: 17.2,  share: 1.14 },
+          { rank: 21, brand: "اذر خوشه",     sales: 16.8,  share: 1.11 },
+          { rank: 22, brand: "اعیانی",       sales: 16.7,  share: 1.10 },
+          { rank: 23, brand: "زریران",       sales: 13.8,  share: 0.91 },
+          { rank: 24, brand: "هور",          sales: 13.2,  share: 0.87 },
+          { rank: 25, brand: "زرمه",         sales: 12.6,  share: 0.83 },
+          { rank: 26, brand: "ساتیرا",       sales: 11.2,  share: 0.74 },
+          { rank: 27, brand: "عطر خورشید",   sales: 9.2,   share: 0.61 },
+          { rank: 28, brand: "زفرا",         sales: 4.6,   share: 0.30 },
+          { rank: 29, brand: "سرخزاد",       sales: 4.6,   share: 0.30 },
+          { rank: 30, brand: "zero",         sales: 0.0,   share: 0.00 },
+          { rank: 31, brand: "زرپر",         sales: 0.0,   share: 0.00 },
+          { rank: 32, brand: "اصالت",        sales: 0.0,   share: 0.00 },
+          { rank: 33, brand: "زروا",         sales: 0.0,   share: 0.00 },
+          { rank: 34, brand: "کام بیز",      sales: 0.0,   share: 0.00 },
+          { rank: 35, brand: "کوهی خیل",     sales: 0.0,   share: 0.00 },
+          { rank: 36, brand: "زرتاب",        sales: 0.0,   share: 0.00 },
+          { rank: 37, brand: "مثقال",        sales: 0.0,   share: 0.00 }
+        ]
+      },
+      // Week 4
+      {
+        id: "week4",
+        label: "هفته ۴",
+        dateRange: "۱۴۰۴/۹/۱۲ تا ۱۴۰۴/۹/۱۸",
+        data: [
+          { rank: 1,  brand: "سفرون",        sales: 233.6, share: 28.34 },
+          { rank: 2,  brand: "پری زاد",      sales: 131.1, share: 15.90 },
+          { rank: 3,  brand: "زرآسا",        sales: 119.6, share: 14.51 },
+          { rank: 4,  brand: "گل پری",       sales: 101.2, share: 12.28 },
+          { rank: 5,  brand: "زرافران",      sales: 60.8,  share: 7.38 },
+          { rank: 6,  brand: "زرکس",         sales: 50.6,  share: 6.14 },
+          { rank: 7,  brand: "زعفرو",        sales: 20.8,  share: 2.52 },
+          { rank: 8,  brand: "زریران",       sales: 18.9,  share: 2.29 },
+          { rank: 9,  brand: "زرمه",         sales: 18.4,  share: 2.23 },
+          { rank: 10, brand: "عطر خورشید",   sales: 13.8,  share: 1.67 },
+          { rank: 11, brand: "میترا",        sales: 13.7,  share: 1.66 },
+          { rank: 12, brand: "زرنگار",       sales: 11.2,  share: 1.36 },
+          { rank: 13, brand: "اعیانی",       sales: 9.3,   share: 1.13 },
+          { rank: 14, brand: "سرو زر",       sales: 9.2,   share: 1.12 },
+          { rank: 15, brand: "ساتیرا",       sales: 7.5,   share: 0.91 },
+          { rank: 16, brand: "زفرا",         sales: 4.6,   share: 0.56 },
+          { rank: 17, brand: "زرون",         sales: 0.0,   share: 0.00 },
+          { rank: 18, brand: "سفیرا",        sales: 0.0,   share: 0.00 },
+          { rank: 19, brand: "azaferan",     sales: 0.0,   share: 0.00 },
+          { rank: 20, brand: "آرمیتی",       sales: 0.0,   share: 0.00 },
+          { rank: 21, brand: "سفوران",       sales: 0.0,   share: 0.00 },
+          { rank: 22, brand: "زرنوا",        sales: 0.0,   share: 0.00 },
+          { rank: 24, brand: "زرسازان",      sales: 0.0,   share: 0.00 },
+          { rank: 25, brand: "تیسور",        sales: 0.0,   share: 0.00 },
+          { rank: 26, brand: "خاتون",        sales: 0.0,   share: 0.00 },
+          { rank: 27, brand: "ساروند",       sales: 0.0,   share: 0.00 },
+          { rank: 28, brand: "اذر خوشه",     sales: 0.0,   share: 0.00 },
+          { rank: 29, brand: "هور",          sales: 0.0,   share: 0.00 },
+          { rank: 30, brand: "سرخزاد",       sales: 0.0,   share: 0.00 },
+          { rank: 31, brand: "zero",         sales: 0.0,   share: 0.00 },
+          { rank: 32, brand: "زرپر",         sales: 0.0,   share: 0.00 },
+          { rank: 33, brand: "اصالت",        sales: 0.0,   share: 0.00 },
+          { rank: 34, brand: "زروا",         sales: 0.0,   share: 0.00 }
+        ]
+      },
+      // Week 5 (cumulative فروش گرم)
+      {
+        id: "week5",
+        label: "هفته ۵",
+        dateRange: "۱۴۰۴/۹/۱۹ تا ۱۴۰۴/۹/۲۵",
+        data: [
+          { rank: 1,  brand: "سفیرا",      sales: 1023.0,  share: 17.38 },
+          { rank: 2,  brand: "گل پری",     sales: 975.2,   share: 16.57 },
+          { rank: 3,  brand: "زرآسا",      sales: 951.28,  share: 16.16 },
+          { rank: 4,  brand: "زرکس",       sales: 828.0,   share: 14.07 },
+          { rank: 5,  brand: "زرافران",    sales: 563.5,   share: 9.57 },
+          { rank: 6,  brand: "سرو زر",     sales: 420.9,   share: 7.15 },
+          { rank: 7,  brand: "پری زاد",    sales: 257.6,   share: 4.38 },
+          { rank: 8,  brand: "سفرون",      sales: 239.2,   share: 4.06 },
+          { rank: 9,  brand: "azaferan",   sales: 174.8,   share: 2.97 },
+          { rank: 10, brand: "زریران",     sales: 170.8,   share: 2.90 },
+          { rank: 11, brand: "میترا",      sales: 102.5,   share: 1.74 },
+          { rank: 12, brand: "زرون",       sales: 96.6,    share: 1.64 },
+          { rank: 13, brand: "اذر خوشه",   sales: 59.0,    share: 1.00 },
+          { rank: 14, brand: "ساروند",     sales: 23.0,    share: 0.39 },
+          { rank: 15, brand: "زعفرو",      sales: 0.0,     share: 0.00 },
+          { rank: 16, brand: "زرمه",       sales: 0.0,     share: 0.00 },
+          { rank: 17, brand: "عطر خورشید", sales: 0.0,     share: 0.00 },
+          { rank: 18, brand: "زرنگار",     sales: 0.0,     share: 0.00 },
+          { rank: 19, brand: "اعیانی",     sales: 0.0,     share: 0.00 },
+          { rank: 20, brand: "ساتیرا",     sales: 0.0,     share: 0.00 },
+          { rank: 21, brand: "زفرا",       sales: 0.0,     share: 0.00 },
+          { rank: 22, brand: "زرسازان",    sales: 0.0,     share: 0.00 },
+          { rank: 23, brand: "زرنوا",      sales: 0.0,     share: 0.00 },
+          { rank: 24, brand: "هور",        sales: 0.0,     share: 0.00 },
+          { rank: 25, brand: "زرپر",       sales: 0.0,     share: 0.00 },
+          { rank: 26, brand: "zero",       sales: 0.0,     share: 0.00 },
+          { rank: 27, brand: "سرخزاد",     sales: 0.0,     share: 0.00 },
+          { rank: 28, brand: "آرمیتی",     sales: 0.0,     share: 0.00 },
+          { rank: 29, brand: "سفوران",     sales: 0.0,     share: 0.00 },
+          { rank: 30, brand: "زروا",       sales: 0.0,     share: 0.00 },
+          { rank: 31, brand: "اصالت",      sales: 0.0,     share: 0.00 },
+          { rank: 32, brand: "تیسور",      sales: 0.0,     share: 0.00 },
+          { rank: 33, brand: "خاتون",      sales: 0.0,     share: 0.00 }
+        ]
+      }
+    ];
+
+    // ==== WEEKLY POINTS DATA (امتیاز مسابقه) ====
+    const weeklyPointsData = [
+      {
+        id: "week1",
+        label: "هفته ۱",
+        dateRange: "۱۴۰۴/۸/۲۱ تا ۱۴۰۴/۸/۲۷",
+        data: [
+          { rank: 1,  brand: "سفیرا",      points: 156.9 },
+          { rank: 2,  brand: "زرون",       points: 136.58 },
+          { rank: 3,  brand: "زرآسا",      points: 120.22 },
+          { rank: 4,  brand: "میترا",      points: 96.38 },
+          { rank: 5,  brand: "اعیانی",     points: 72.96 },
+          { rank: 6,  brand: "گل پری",     points: 71.8 },
+          { rank: 7,  brand: "عطر خورشید", points: 55.38 },
+          { rank: 8,  brand: "زرافران",    points: 53.16 },
+          { rank: 9,  brand: "azaferan",   points: 50.06 },
+          { rank: 10, brand: "ساتیرا",     points: 47.74 },
+          { rank: 11, brand: "زریران",     points: 46.58 },
+          { rank: 12, brand: "زعفرو",      points: 45.16 },
+          { rank: 13, brand: "زرمه",       points: 42.58 },
+          { rank: 14, brand: "خاتون",      points: 42.42 },
+          { rank: 15, brand: "سرو زر",     points: 42.16 },
+          { rank: 16, brand: "پری زاد",    points: 41.58 },
+          { rank: 17, brand: "ساروند",     points: 40.58 },
+          { rank: 18, brand: "ققنوس",      points: 40 },
+          { rank: 19, brand: "سفرون",      points: 39.36 },
+          { rank: 20, brand: "هور",        points: 37.58 },
+          { rank: 21, brand: "زرنوا",      points: 36.58 },
+          { rank: 22, brand: "تیسور",      points: 35.58 },
+          { rank: 23, brand: "آذرخوشه",    points: 35 },
+          { rank: 24, brand: "زرکس",       points: 34 },
+          { rank: 25, brand: "آرمیتی",     points: 30.58 },
+          { rank: 26, brand: "zero",       points: 29.58 },
+          { rank: 27, brand: "سفوران",     points: 26.58 },
+          { rank: 28, brand: "زفرا",       points: 25.58 },
+          { rank: 29, brand: "زرسازان",    points: 18.42 },
+          { rank: 30, brand: "زرپر",       points: 12.58 },
+          { rank: 31, brand: "زرنگار",     points: 5.58 },
+          { rank: 32, brand: "اصالت",      points: 5.58 },
+          { rank: 33, brand: "سرخزاد",     points: 0 },
+          { rank: 34, brand: "زرتاب",      points: 0 },
+          { rank: 35, brand: "کام بیز",    points: 0 }
+        ]
+      },
+      {
+        id: "week2",
+        label: "هفته ۲-۳",
+        dateRange: "۱۴۰۴/۸/۲۸ تا ۱۴۰۴/۹/۴",
+        data: [
+          { rank: 1,  brand: "پری زاد",      points: 191.26 },
+          { rank: 2,  brand: "زرآسا",        points: 153.026 },
+          { rank: 3,  brand: "گل پری",       points: 135.704 },
+          { rank: 4,  brand: "زرون",         points: 94.1576 },
+          { rank: 5,  brand: "زرافران",      points: 81.1078 },
+          { rank: 6,  brand: "سفیرا",        points: 71.1288 },
+          { rank: 7,  brand: "میترا",        points: 70.5523 },
+          { rank: 8,  brand: "سفرون",        points: 69.3898 },
+          { rank: 9,  brand: "زریران",       points: 64.3143 },
+          { rank: 10, brand: "azaferan",     points: 62.2574 },
+          { rank: 11, brand: "زعفرو",        points: 61.3432 },
+          { rank: 12, brand: "زرنوا",        points: 53.2287 },
+          { rank: 13, brand: "زرکس",         points: 52.8257 },
+          { rank: 14, brand: "سفوران",       points: 47.8001 },
+          { rank: 15, brand: "زرنگار",       points: 45.7028 },
+          { rank: 16, brand: "اعیانی",       points: 39.8094 },
+          { rank: 17, brand: "زرسازان",      points: 39.1572 },
+          { rank: 18, brand: "سرو زر",       points: 37.1003 },
+          { rank: 19, brand: "ساروند",       points: 36.1671 },
+          { rank: 20, brand: "ساتیرا",       points: 33.074 },
+          { rank: 21, brand: "زفرا",         points: 24.4715 },
+          { rank: 22, brand: "آرمیتی",       points: 20.2716 },
+          { rank: 23, brand: "زرمه",         points: 20.1457 },
+          { rank: 24, brand: "خاتون",        points: 19.6168 },
+          { rank: 25, brand: "تیسور",        points: 19.0072 },
+          { rank: 26, brand: "آذرخوشه",      points: 15.1609 },
+          { rank: 27, brand: "عطر خورشید",   points: 12.5429 },
+          { rank: 28, brand: "هور",          points: 12.005 },
+          { rank: 29, brand: "سرخزاد",       points: 2.37145 },
+          { rank: 30, brand: "zero",         points: 0 },
+          { rank: 31, brand: "زرپر",         points: 0 },
+          { rank: 32, brand: "اصالت",        points: 0 },
+          { rank: 33, brand: "زروا",         points: 0 },
+          { rank: 34, brand: "کام بیز",      points: 0 },
+          { rank: 35, brand: "کوهی خیل",     points: 0 },
+          { rank: 36, brand: "زرتاب",        points: 0 },
+          { rank: 37, brand: "مثقال",        points: 0 }
+        ]
+      },
+      {
+        id: "week4",
+        label: "هفته ۴",
+        dateRange: "۱۴۰۴/۹/۱۲ تا ۱۴۰۴/۹/۱۸",
+        data: [
+          { rank: 1,  brand: "سفرون",        points: 470.464 },
+          { rank: 2,  brand: "زرآسا",        points: 334.496 },
+          { rank: 3,  brand: "گل پری",       points: 304.288 },
+          { rank: 4,  brand: "پری زاد",      points: 268.64 },
+          { rank: 5,  brand: "زرکس",         points: 227.744 },
+          { rank: 6,  brand: "میترا",        points: 167.936 },
+          { rank: 7,  brand: "زرافران",      points: 154.048 },
+          { rank: 8,  brand: "زریران",       points: 91.584 },
+          { rank: 9,  brand: "زرمه",         points: 88.608 },
+          { rank: 10, brand: "azaferan",     points: 80.8 },
+          { rank: 11, brand: "زعفرو",        points: 52.992 },
+          { rank: 12, brand: "سرو زر",       points: 33.152 },
+          { rank: 13, brand: "هور",          points: 25.6 },
+          { rank: 14, brand: "عطر خورشید",   points: 16.032 },
+          { rank: 15, brand: "زرنگار",       points: 13.056 },
+          { rank: 16, brand: "اعیانی",       points: 10.848 },
+          { rank: 17, brand: "ساتیرا",       points: 8.736 },
+          { rank: 18, brand: "زفرا",         points: 5.376 },
+          { rank: 19, brand: "زرون",         points: 0 },
+          { rank: 20, brand: "سفیرا",        points: 0 },
+          { rank: 21, brand: "آرمیتی",       points: 0 },
+          { rank: 22, brand: "سفوران",       points: 0 },
+          { rank: 23, brand: "زرنوا",        points: 0 },
+          { rank: 24, brand: "زرسازان",      points: 0 },
+          { rank: 25, brand: "تیسور",        points: 0 },
+          { rank: 26, brand: "خاتون",        points: 0 },
+          { rank: 27, brand: "ساروند",       points: 0 },
+          { rank: 28, brand: "اذر خوشه",     points: 0 },
+          { rank: 29, brand: "سرخزاد",       points: 0 },
+          { rank: 30, brand: "zero",         points: 0 },
+          { rank: 31, brand: "زرپر",         points: 0 },
+          { rank: 32, brand: "اصالت",        points: 0 },
+          { rank: 33, brand: "زروا",         points: 0 }
+        ]
+      },
+      {
+        id: "week5",
+        label: "هفته ۵",
+        dateRange: "۱۴۰۴/۹/۱۹ تا ۱۴۰۴/۹/۲۵",
+        data: [
+          { rank: 1,  brand: "زرآسا",      points: 341.928 },
+          { rank: 2,  brand: "گل پری",     points: 341.856 },
+          { rank: 3,  brand: "سفیرا",      points: 313.704 },
+          { rank: 4,  brand: "زرکس",       points: 296.856 },
+          { rank: 5,  brand: "زرافران",    points: 220.356 },
+          { rank: 6,  brand: "پری زاد",    points: 180.504 },
+          { rank: 7,  brand: "سفرون",      points: 171.648 },
+          { rank: 8,  brand: "سرو زر",     points: 129.42 },
+          { rank: 9,  brand: "زریران",     points: 112.32 },
+          { rank: 10, brand: "azaferan",   points: 107.676 },
+          { rank: 11, brand: "میترا",      points: 101.592 },
+          { rank: 12, brand: "زرون",       points: 17.712 },
+          { rank: 13, brand: "آذرخوشه",    points: 10.8 },
+          { rank: 14, brand: "ساروند",     points: 4.212 },
+          { rank: 15, brand: "زعفرو",      points: 0 },
+          { rank: 16, brand: "زرمه",       points: 0 },
+          { rank: 17, brand: "عطر خورشید", points: 0 },
+          { rank: 18, brand: "زرنگار",     points: 0 },
+          { rank: 19, brand: "اعیانی",     points: 0 },
+          { rank: 20, brand: "ساتیرا",     points: 0 },
+          { rank: 21, brand: "زفرا",       points: 0 },
+          { rank: 22, brand: "زرسازان",    points: 0 },
+          { rank: 23, brand: "زرنوا",      points: 0 },
+          { rank: 24, brand: "هور",        points: 0 },
+          { rank: 25, brand: "زرپر",       points: 0 },
+          { rank: 26, brand: "zero",       points: 0 },
+          { rank: 27, brand: "سرخزاد",     points: 0 },
+          { rank: 28, brand: "آرمیتی",     points: 0 },
+          { rank: 29, brand: "سفوران",     points: 0 },
+          { rank: 30, brand: "زروا",       points: 0 },
+          { rank: 31, brand: "اصالت",      points: 0 },
+          { rank: 32, brand: "تیسور",      points: 0 },
+          { rank: 33, brand: "خاتون",      points: 0 }
+        ]
+      }
+    ];
+
+    // ==== FINAL SCORES (امتیاز کل مسابقه) ====
+    const finalScores = [
+  { rank: 1,  team: "زرآسا",      score: 1297.6702 },
+  { rank: 2,  team: "گل پری",     score: 1195.6484 },
+  { rank: 3,  team: "سفرون",      score: 1053.86176 },
+  { rank: 4,  team: "پری زاد",    score: 1009.9838 },
+  { rank: 5,  team: "زرکس",       score: 869.42571 },
+  { rank: 6,  team: "سفیرا",      score: 771.73282 },
+  { rank: 7,  team: "زرافران",    score: 508.6718 },
+  { rank: 8,  team: "میترا",      score: 436.46028 },
+  { rank: 9,  team: "زریران",     score: 314.79834 },
+  { rank: 10, team: "azaferan",   score: 300.79337 },
+  { rank: 11, team: "زرون",       score: 248.44963 },
+  { rank: 12, team: "سرو زر",     score: 241.83226 },
+  { rank: 13, team: "زعفرو",      score: 159.49516 },
+  { rank: 14, team: "زرمه",       score: 151.3337 },
+  { rank: 15, team: "اعیانی",     score: 123.61739 },
+  { rank: 16, team: "زرنوا",      score: 89.80868 },
+  { rank: 17, team: "ساتیرا",     score: 89.54996 },
+  { rank: 18, team: "عطر خورشید", score: 83.95489 },
+  { rank: 19, team: "ساروند",     score: 80.95915 },
+  { rank: 20, team: "هور",        score: 75.18502 },
+  { rank: 21, team: "سفوران",     score: 74.38013 },
+  { rank: 22, team: "زرنگار",     score: 64.33878 },
+  { rank: 23, team: "خاتون",      score: 62.03685 },
+  { rank: 24, team: "آذرخوشه",    score: 60.96094 },
+  { rank: 25, team: "زرسازان",    score: 57.57724 },
+  { rank: 26, team: "زفرا",       score: 55.42745 },
+  { rank: 27, team: "تیسور",      score: 54.58724 },
+  { rank: 28, team: "آرمیتی",     score: 50.85158 },
+  { rank: 29, team: "ققنوس",      score: 40 },
+  { rank: 30, team: "zero",       score: 29.58 },
+  { rank: 31, team: "زرپر",       score: 12.58 },
+  { rank: 32, team: "اصالت",      score: 5.58 },
+  { rank: 33, team: "سرخزاد",     score: 2.371447 },
+  { rank: 34, team: "زرتاب",      score: 0 },
+  { rank: 35, team: "کام بیز",    score: 0 }
 ];
 
-const weekTabsEl = document.getElementById("week-tabs");
-const panelEl = document.getElementById("leaderboard-panel");
+    // ==== FINAL SCORES BY WEEK (۵ ستون امتیاز) ====
+    const finalScoresByWeek = [
+      {
+        team: "زرآسا",
+        week1: 120.22,
+        week23: 153.026,
+        week4: 334.496,
+        week5: 341.928,
+        total: 949.67
+      },
+      {
+        team: "گل پری",
+        week1: 71.8,
+        week23: 135.704,
+        week4: 304.288,
+        week5: 341.856,
+        total: 853.648
+      },
+      {
+        team: "سفرون",
+        week1: 39.36,
+        week23: 69.3898,
+        week4: 470.464,
+        week5: 171.648,
+        total: 750.862
+      },
+      {
+        team: "پری زاد",
+        week1: 41.58,
+        week23: 191.26,
+        week4: 268.64,
+        week5: 180.504,
+        total: 681.984
+      },
+      {
+        team: "زرکس",
+        week1: 34,
+        week23: 52.8257,
+        week4: 227.744,
+        week5: 296.856,
+        total: 611.426
+      },
+      {
+        team: "سفیرا",
+        week1: 156.9,
+        week23: 71.1288,
+        week4: 0,
+        week5: 313.704,
+        total: 541.733
+      },
+      {
+        team: "زرافران",
+        week1: 53.16,
+        week23: 81.1078,
+        week4: 154.048,
+        week5: 220.356,
+        total: 508.672
+      },
+      {
+        team: "میترا",
+        week1: 96.38,
+        week23: 70.5523,
+        week4: 167.936,
+        week5: 101.592,
+        total: 436.46
+      },
+      {
+        team: "زریران",
+        week1: 46.58,
+        week23: 64.3143,
+        week4: 91.584,
+        week5: 112.32,
+        total: 314.798
+      },
+      {
+        team: "azaferan",
+        week1: 50.06,
+        week23: 62.2574,
+        week4: 80.8,
+        week5: 107.676,
+        total: 300.793
+      },
+      {
+        team: "زرون",
+        week1: 136.58,
+        week23: 94.1576,
+        week4: 0,
+        week5: 17.712,
+        total: 248.45
+      },
+      {
+        team: "سرو زر",
+        week1: 42.16,
+        week23: 37.1003,
+        week4: 33.152,
+        week5: 129.42,
+        total: 241.832
+      },
+      {
+        team: "زعفرو",
+        week1: 45.16,
+        week23: 61.3432,
+        week4: 52.992,
+        week5: 0,
+        total: 159.495
+      },
+      {
+        team: "زرمه",
+        week1: 42.58,
+        week23: 20.1457,
+        week4: 88.608,
+        week5: 0,
+        total: 151.334
+      },
+      {
+        team: "اعیانی",
+        week1: 72.96,
+        week23: 39.8094,
+        week4: 10.848,
+        week5: 0,
+        total: 123.617
+      },
+      {
+        team: "زرنوا",
+        week1: 36.58,
+        week23: 53.2287,
+        week4: 0,
+        week5: 0,
+        total: 89.8087
+      },
+      {
+        team: "ساتیرا",
+        week1: 47.74,
+        week23: 33.074,
+        week4: 8.736,
+        week5: 0,
+        total: 89.55
+      },
+      {
+        team: "عطر خورشید",
+        week1: 55.38,
+        week23: 12.5429,
+        week4: 16.032,
+        week5: 0,
+        total: 83.9549
+      },
+      {
+        team: "ساروند",
+        week1: 40.58,
+        week23: 36.1671,
+        week4: 0,
+        week5: 4.212,
+        total: 80.9592
+      },
+      {
+        team: "هور",
+        week1: 37.58,
+        week23: 12.005,
+        week4: 25.6,
+        week5: 0,
+        total: 75.185
+      },
+      {
+        team: "سفوران",
+        week1: 26.58,
+        week23: 47.8001,
+        week4: 0,
+        week5: 0,
+        total: 74.3801
+      },
+      {
+        team: "زرنگار",
+        week1: 5.58,
+        week23: 45.7028,
+        week4: 13.056,
+        week5: 0,
+        total: 64.3388
+      },
+      {
+        team: "خاتون",
+        week1: 42.42,
+        week23: 19.6168,
+        week4: 0,
+        week5: 0,
+        total: 62.0369
+      },
+      {
+        team: "آذرخوشه",
+        week1: 35,
+        week23: 15.1609,
+        week4: 0,
+        week5: 10.8,
+        total: 60.9609
+      },
+      {
+        team: "زرسازان",
+        week1: 18.42,
+        week23: 39.1572,
+        week4: 0,
+        week5: 0,
+        total: 57.5772
+      },
+      {
+        team: "زفرا",
+        week1: 25.58,
+        week23: 24.4715,
+        week4: 5.376,
+        week5: 0,
+        total: 55.4275
+      },
+      {
+        team: "تیسور",
+        week1: 35.58,
+        week23: 19.0072,
+        week4: 0,
+        week5: 0,
+        total: 54.5872
+      },
+      {
+        team: "آرمیتی",
+        week1: 30.58,
+        week23: 20.2716,
+        week4: 0,
+        week5: 0,
+        total: 50.8516
+      },
+      {
+        team: "ققنوس",
+        week1: 40,
+        week23: 0,
+        week4: 0,
+        week5: 0,
+        total: 40
+      },
+      {
+        team: "zero",
+        week1: 29.58,
+        week23: 0,
+        week4: 0,
+        week5: 0,
+        total: 29.58
+      },
+      {
+        team: "زرپر",
+        week1: 12.58,
+        week23: 0,
+        week4: 0,
+        week5: 0,
+        total: 12.58
+      },
+      {
+        team: "اصالت",
+        week1: 5.58,
+        week23: 0,
+        week4: 0,
+        week5: 0,
+        total: 5.58
+      },
+      {
+        team: "سرخزاد",
+        week1: 0,
+        week23: 2.37145,
+        week4: 0,
+        week5: 0,
+        total: 2.37145
+      },
+      {
+        team: "زرتاب",
+        week1: 0,
+        week23: 0,
+        week4: 0,
+        week5: 0,
+        total: 0
+      },
+      {
+        team: "کام بیز",
+        week1: 0,
+        week23: 0,
+        week4: 0,
+        week5: 0,
+        total: 0
+      }
+    ];
 
-let activeWeekId = "week5";
+    const weekTabsEl = document.getElementById("week-tabs");
+    const panelEl = document.getElementById("leaderboard-panel");
+    const finalListEl = document.getElementById("final-list");
+    const finalWeeksBodyEl = document.getElementById("final-weeks-body");
 
-function buildTabs() {
-  weekTabsEl.innerHTML = weeklyLeaderboards
-    .map((w) => {
-      const isActive = w.id === activeWeekId;
-      return `
-        <button
-          class="week-tab ${isActive ? "active" : ""}"
-          data-week-id="${w.id}"
-        >
-          <i class="fas fa-calendar-week text-xs"></i>
-          <span>${w.label}</span>
-        </button>`;
-    })
-    .join("");
-}
+    const toggleSwitch = document.getElementById("toggle-switch");
+    const labelSales = document.getElementById("label-sales");
+    const labelPoints = document.getElementById("label-points");
 
-function createRow(item, index) {
-  const rankClass =
-    item.rank === 1
-      ? "rank-1"
-      : item.rank === 2
-      ? "rank-2"
-      : item.rank === 3
-      ? "rank-3"
-      : "rank-other";
+    // Final page toggle elements
+    const toggleFinalView = document.getElementById("toggle-final-view");
+    const labelOverall = document.getElementById("label-overall");
+    const labelWeeklyBreakdown = document.getElementById("label-weekly-breakdown");
+    const finalSection = document.getElementById("final-section");
+    const finalWeeksSection = document.getElementById("final-weeks");
 
-  const iconHtml =
-    item.rank === 1
-      ? '<i class="fas fa-crown"></i>'
-      : item.rank;
+    let activeWeekId = "week5"; // default
+    let finalViewMode = "overall"; // default: show overall final ranking
 
-  const delay = (index + 1) * 0.04;
+    // ==== PAGE NAVIGATION ====
+    const pageNavBtns = document.querySelectorAll(".page-nav-btn");
+    const pageContainers = document.querySelectorAll(".page-container");
 
-  return `
-    <div class="leaderboard-row animate-row" style="animation-delay: ${delay}s">
-      <div class="rank-badge ${rankClass}">${iconHtml}</div>
-      <div class="brand-name">${item.brand}</div>
-      <div class="stats-wrapper">
-        <div class="stat-box">
-          <div class="stat-label">مقدار فروش</div>
-          <div class="stat-value">${item.sales} گرم</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">سهم در بازار</div>
-          <div class="stat-value">٪${item.share.toFixed(2)}</div>
-        </div>
-      </div>
-    </div>`;
-}
+    pageNavBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetPage = btn.getAttribute("data-page");
 
-function buildPanels() {
-  const activeWeek = weeklyLeaderboards.find(w => w.id === activeWeekId);
-  if (!activeWeek) {
-    panelEl.innerHTML = "";
-    return;
-  }
+        // Update active button
+        pageNavBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
 
-  const rowsHtml = activeWeek.data
-    .map((item, i) => createRow(item, i))
-    .join("");
+        // Show target page
+        pageContainers.forEach(page => {
+          if (page.id === targetPage) {
+            page.classList.add("active");
+          } else {
+            page.classList.remove("active");
+          }
+        });
+      });
+    });
 
-  panelEl.innerHTML = `
-    <div class="leaderboard-inner active" data-week-panel="${activeWeek.id}">
-      <div class="text-xs text-gray-500 mb-2 text-center md:text-right">
-        <i class="far fa-clock ml-1"></i>
-        بازه زمانی: ${activeWeek.dateRange}
-      </div>
-      <div>${rowsHtml}</div>
-    </div>`;
-}
+    // ==== TOGGLE SWITCH (Weekly: Sales vs Points) ====
+    toggleSwitch.addEventListener("click", () => {
+      if (dataMode === "sales") {
+        dataMode = "points";
+        toggleSwitch.classList.add("active");
+        labelSales.classList.remove("active");
+        labelPoints.classList.add("active");
+      } else {
+        dataMode = "sales";
+        toggleSwitch.classList.remove("active");
+        labelSales.classList.add("active");
+        labelPoints.classList.remove("active");
+      }
+      buildPanels();
+    });
 
-function onTabsClick(e) {
-  const btn = e.target.closest(".week-tab");
-  if (!btn) return;
+    // ==== FINAL PAGE TOGGLE (Overall vs Week-by-Week) ====
+    if (toggleFinalView) {
+      toggleFinalView.addEventListener("click", () => {
+        if (finalViewMode === "overall") {
+          finalViewMode = "weekly";
+          toggleFinalView.classList.add("active");
+          if (labelOverall) labelOverall.classList.remove("active");
+          if (labelWeeklyBreakdown) labelWeeklyBreakdown.classList.add("active");
+          if (finalSection) finalSection.style.display = "none";
+          if (finalWeeksSection) finalWeeksSection.style.display = "block";
+        } else {
+          finalViewMode = "overall";
+          toggleFinalView.classList.remove("active");
+          if (labelOverall) labelOverall.classList.add("active");
+          if (labelWeeklyBreakdown) labelWeeklyBreakdown.classList.remove("active");
+          if (finalSection) finalSection.style.display = "block";
+          if (finalWeeksSection) finalWeeksSection.style.display = "none";
+        }
+      });
+    }
 
-  const targetId = btn.getAttribute("data-week-id");
-  if (!targetId || targetId === activeWeekId) return;
+    function buildTabs() {
+      const source = dataMode === "sales" ? weeklySalesData : weeklyPointsData;
+      weekTabsEl.innerHTML = source
+        .map((w) => {
+          const isActive = w.id === activeWeekId;
+          return `
+            <button
+              class="week-tab ${isActive ? "active" : ""}"
+              data-week-id="${w.id}"
+            >
+              <i class="fas fa-calendar-week text-xs"></i>
+              <span>${w.label}</span>
+            </button>`;
+        })
+        .join("");
+    }
 
-  activeWeekId = targetId;
+    function createRow(item, index) {
+      const rankClass =
+        item.rank === 1
+          ? "rank-1"
+          : item.rank === 2
+          ? "rank-2"
+          : item.rank === 3
+          ? "rank-3"
+          : "rank-other";
 
-  document
-    .querySelectorAll(".week-tab")
-    .forEach((t) => t.classList.remove("active"));
-  btn.classList.add("active");
+      const iconHtml =
+        item.rank === 1
+          ? '<i class="fas fa-crown"></i>'
+          : item.rank;
 
-  buildPanels();
-}
+      const delay = (index + 1) * 0.04;
 
-window.addEventListener("load", () => {
-  buildTabs();
-  buildPanels();
+      if (dataMode === "sales") {
+        return `
+          <div class="leaderboard-row animate-row" style="animation-delay: ${delay}s">
+            <div class="rank-badge ${rankClass}">${iconHtml}</div>
+            <div class="brand-name">${item.brand}</div>
+            <div class="stats-wrapper">
+              <div class="stat-box">
+                <div class="stat-label">مقدار فروش</div>
+                <div class="stat-value">${item.sales} گرم</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">سهم در بازار</div>
+                <div class="stat-value">٪${item.share.toFixed(2)}</div>
+              </div>
+            </div>
+          </div>`;
+      } else {
+        return `
+          <div class="leaderboard-row animate-row" style="animation-delay: ${delay}s">
+            <div class="rank-badge ${rankClass}">${iconHtml}</div>
+            <div class="brand-name">${item.brand}</div>
+            <div class="stats-wrapper">
+              <div class="stat-box">
+                <div class="stat-label">امتیاز</div>
+                <div class="stat-value">${item.points.toFixed(2)}</div>
+              </div>
+            </div>
+          </div>`;
+      }
+    }
 
-  const splash = document.getElementById("splash-screen");
-  setTimeout(() => {
-    splash.classList.add("splash-fade-out");
-    setTimeout(() => {
-      splash.style.display = "none";
-    }, 700);
-  }, 2300);
-});
+    function buildPanels() {
+      const source = dataMode === "sales" ? weeklySalesData : weeklyPointsData;
+      const activeWeek = source.find(w => w.id === activeWeekId);
+      if (!activeWeek) {
+        panelEl.innerHTML = "";
+        return;
+      }
 
-weekTabsEl.addEventListener("click", onTabsClick);
+      const rowsHtml = activeWeek.data
+        .map((item, i) => createRow(item, i))
+        .join("");
+
+      panelEl.innerHTML = `
+        <div class="leaderboard-inner active" data-week-panel="${activeWeek.id}">
+          <div class="text-xs text-gray-500 mb-2 text-center md:text-right">
+            <i class="far fa-clock ml-1"></i>
+            بازه زمانی: ${activeWeek.dateRange}
+          </div>
+          <div>${rowsHtml}</div>
+        </div>`;
+    }
+
+    function onTabsClick(e) {
+      const btn = e.target.closest(".week-tab");
+      if (!btn) return;
+
+      const targetId = btn.getAttribute("data-week-id");
+      if (!targetId || targetId === activeWeekId) return;
+
+      activeWeekId = targetId;
+
+      document
+        .querySelectorAll(".week-tab")
+        .forEach((t) => t.classList.remove("active"));
+      btn.classList.add("active");
+
+      buildPanels();
+    }
+
+    // ==== RENDER FINAL OVERALL LEADERBOARD ====
+    function renderFinalScores() {
+      if (!finalListEl) return;
+
+      finalListEl.innerHTML = finalScores
+        .map((item, index) => {
+          const delay = index * 70; // ms
+          return `
+            <div
+              class="final-item rank-${item.rank}"
+              style="animation-delay:${delay}ms"
+            >
+              <div class="final-badge">${item.rank}</div>
+              <div class="final-team">
+                <div class="final-team-name">${item.team}</div>
+                <div class="text-xs" style="opacity:.7">
+                </div>
+              </div>
+              <div class="final-score">
+                ${item.score.toFixed(3)}
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+    }
+
+    // ==== RENDER FINAL WEEK-BY-WEEK TABLE ====
+    function renderFinalWeeksTable() {
+      if (!finalWeeksBodyEl) return;
+
+      const sorted = [...finalScoresByWeek].sort((a, b) => b.total - a.total);
+
+      finalWeeksBodyEl.innerHTML = sorted
+        .map((row, index) => {
+          const rank = index + 1;
+          const delay = index * 45;
+          const topClass =
+            rank === 1 ? "top-1" :
+            rank === 2 ? "top-2" :
+            rank === 3 ? "top-3" : "";
+
+          return `
+            <tr class="${topClass}" style="animation-delay:${delay}ms">
+              <td>${rank}</td>
+              <td>${row.team}</td>
+              <td>${row.week1.toFixed(2)}</td>
+              <td>${row.week23.toFixed(2)}</td>
+              <td>${row.week4.toFixed(2)}</td>
+              <td>${row.week5.toFixed(2)}</td>
+              <td>${row.total.toFixed(3)}</td>
+            </tr>
+          `;
+        })
+        .join("");
+    }
+
+    // ==== INIT ====
+    window.addEventListener("load", () => {
+      buildTabs();
+      buildPanels();
+      renderFinalScores();
+      renderFinalWeeksTable();
+
+      // Initialize final page view: show overall, hide weekly breakdown
+      if (finalSection && finalWeeksSection) {
+        finalSection.style.display = "block";
+        finalWeeksSection.style.display = "none";
+      }
+
+      const splash = document.getElementById("splash-screen");
+      setTimeout(() => {
+        splash.classList.add("splash-fade-out");
+        setTimeout(() => {
+          splash.style.display = "none";
+        }, 700);
+      }, 2300);
+    });
+
+    weekTabsEl.addEventListener("click", onTabsClick);
   </script>
 </body>
 </html>
